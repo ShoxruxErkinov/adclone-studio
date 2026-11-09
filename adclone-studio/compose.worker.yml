@@ -1,0 +1,15 @@
+services:
+  render-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    env_file: .env.local
+    environment:
+      CHROME_EXECUTABLE: /usr/bin/chromium
+    init: true
+    restart: unless-stopped
+    shm_size: 1gb
+    volumes:
+      - worker-cache:/app/.data
+volumes:
+  worker-cache:

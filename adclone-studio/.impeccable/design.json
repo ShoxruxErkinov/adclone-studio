@@ -1,0 +1,844 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-09T07:50:35.791Z",
+  "title": "Design System: AdClone Studio",
+  "extensions": {
+    "colorMeta": {
+      "bg": {
+        "role": "neutral",
+        "displayName": "Bg",
+        "tonalRamp": [
+          "oklch(15.00% 0.0010 264.54)",
+          "oklch(26.43% 0.0019 264.54)",
+          "oklch(37.86% 0.0026 264.54)",
+          "oklch(49.29% 0.0029 264.54)",
+          "oklch(60.71% 0.0029 264.54)",
+          "oklch(72.14% 0.0026 264.54)",
+          "oklch(83.57% 0.0017 264.54)",
+          "oklch(95.00% 0.0007 264.54)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "tonalRamp": [
+          "oklch(15.00% 0.0000 89.88)",
+          "oklch(26.43% 0.0000 89.88)",
+          "oklch(37.86% 0.0000 89.88)",
+          "oklch(49.29% 0.0000 89.88)",
+          "oklch(60.71% 0.0000 89.88)",
+          "oklch(72.14% 0.0000 89.88)",
+          "oklch(83.57% 0.0000 89.88)",
+          "oklch(95.00% 0.0000 89.88)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.0030 196.69)",
+          "oklch(26.43% 0.0055 196.69)",
+          "oklch(37.86% 0.0076 196.69)",
+          "oklch(49.29% 0.0085 196.69)",
+          "oklch(60.71% 0.0085 196.69)",
+          "oklch(72.14% 0.0076 196.69)",
+          "oklch(83.57% 0.0051 196.69)",
+          "oklch(95.00% 0.0021 196.69)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "tonalRamp": [
+          "oklch(15.00% 0.0032 216.67)",
+          "oklch(26.43% 0.0059 216.67)",
+          "oklch(37.86% 0.0081 216.67)",
+          "oklch(49.29% 0.0090 216.67)",
+          "oklch(60.71% 0.0090 216.67)",
+          "oklch(72.14% 0.0081 216.67)",
+          "oklch(83.57% 0.0054 216.67)",
+          "oklch(95.00% 0.0023 216.67)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "tonalRamp": [
+          "oklch(15.00% 0.0012 219.53)",
+          "oklch(26.43% 0.0023 219.53)",
+          "oklch(37.86% 0.0032 219.53)",
+          "oklch(49.29% 0.0035 219.53)",
+          "oklch(60.71% 0.0035 219.53)",
+          "oklch(72.14% 0.0032 219.53)",
+          "oklch(83.57% 0.0021 219.53)",
+          "oklch(95.00% 0.0009 219.53)"
+        ]
+      },
+      "green": {
+        "role": "primary",
+        "displayName": "Green",
+        "tonalRamp": [
+          "oklch(15.00% 0.0443 122.89)",
+          "oklch(26.43% 0.0823 122.89)",
+          "oklch(37.86% 0.1139 122.89)",
+          "oklch(49.29% 0.1266 122.89)",
+          "oklch(60.71% 0.1266 122.89)",
+          "oklch(72.14% 0.1139 122.89)",
+          "oklch(83.57% 0.0759 122.89)",
+          "oklch(95.00% 0.0316 122.89)"
+        ]
+      },
+      "dark": {
+        "role": "neutral",
+        "displayName": "Dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.0039 196.53)",
+          "oklch(26.43% 0.0073 196.53)",
+          "oklch(37.86% 0.0101 196.53)",
+          "oklch(49.29% 0.0112 196.53)",
+          "oklch(60.71% 0.0112 196.53)",
+          "oklch(72.14% 0.0101 196.53)",
+          "oklch(83.57% 0.0067 196.53)",
+          "oklch(95.00% 0.0028 196.53)"
+        ]
+      },
+      "primary-text": {
+        "role": "primary",
+        "displayName": "Primary Text",
+        "tonalRamp": [
+          "oklch(15.00% 0.0122 140.11)",
+          "oklch(26.43% 0.0226 140.11)",
+          "oklch(37.86% 0.0313 140.11)",
+          "oklch(49.29% 0.0347 140.11)",
+          "oklch(60.71% 0.0347 140.11)",
+          "oklch(72.14% 0.0313 140.11)",
+          "oklch(83.57% 0.0208 140.11)",
+          "oklch(95.00% 0.0087 140.11)"
+        ]
+      },
+      "primary-hover": {
+        "role": "primary",
+        "displayName": "Primary Hover",
+        "tonalRamp": [
+          "oklch(15.00% 0.0496 124.21)",
+          "oklch(26.43% 0.0921 124.21)",
+          "oklch(37.86% 0.1275 124.21)",
+          "oklch(49.29% 0.1417 124.21)",
+          "oklch(60.71% 0.1417 124.21)",
+          "oklch(72.14% 0.1275 124.21)",
+          "oklch(83.57% 0.0850 124.21)",
+          "oklch(95.00% 0.0354 124.21)"
+        ]
+      },
+      "secondary-hover": {
+        "role": "neutral",
+        "displayName": "Secondary Hover",
+        "tonalRamp": [
+          "oklch(15.00% 0.0036 131.36)",
+          "oklch(26.43% 0.0066 131.36)",
+          "oklch(37.86% 0.0091 131.36)",
+          "oklch(49.29% 0.0102 131.36)",
+          "oklch(60.71% 0.0102 131.36)",
+          "oklch(72.14% 0.0091 131.36)",
+          "oklch(83.57% 0.0061 131.36)",
+          "oklch(95.00% 0.0025 131.36)"
+        ]
+      },
+      "secondary-text": {
+        "role": "neutral",
+        "displayName": "Secondary Text",
+        "tonalRamp": [
+          "oklch(15.00% 0.0072 147.87)",
+          "oklch(26.43% 0.0133 147.87)",
+          "oklch(37.86% 0.0184 147.87)",
+          "oklch(49.29% 0.0205 147.87)",
+          "oklch(60.71% 0.0205 147.87)",
+          "oklch(72.14% 0.0184 147.87)",
+          "oklch(83.57% 0.0123 147.87)",
+          "oklch(95.00% 0.0051 147.87)"
+        ]
+      },
+      "placeholder": {
+        "role": "neutral",
+        "displayName": "Placeholder",
+        "tonalRamp": [
+          "oklch(15.00% 0.0047 153.44)",
+          "oklch(26.43% 0.0087 153.44)",
+          "oklch(37.86% 0.0121 153.44)",
+          "oklch(49.29% 0.0135 153.44)",
+          "oklch(60.71% 0.0135 153.44)",
+          "oklch(72.14% 0.0121 153.44)",
+          "oklch(83.57% 0.0081 153.44)",
+          "oklch(95.00% 0.0034 153.44)"
+        ]
+      },
+      "field-border": {
+        "role": "neutral",
+        "displayName": "Field Border",
+        "tonalRamp": [
+          "oklch(15.00% 0.0021 170.43)",
+          "oklch(26.43% 0.0039 170.43)",
+          "oklch(37.86% 0.0054 170.43)",
+          "oklch(49.29% 0.0060 170.43)",
+          "oklch(60.71% 0.0060 170.43)",
+          "oklch(72.14% 0.0054 170.43)",
+          "oklch(83.57% 0.0036 170.43)",
+          "oklch(95.00% 0.0015 170.43)"
+        ]
+      },
+      "focus": {
+        "role": "neutral",
+        "displayName": "Focus",
+        "tonalRamp": [
+          "oklch(15.00% 0.0253 129.46)",
+          "oklch(26.43% 0.0470 129.46)",
+          "oklch(37.86% 0.0650 129.46)",
+          "oklch(49.29% 0.0723 129.46)",
+          "oklch(60.71% 0.0723 129.46)",
+          "oklch(72.14% 0.0650 129.46)",
+          "oklch(83.57% 0.0434 129.46)",
+          "oklch(95.00% 0.0181 129.46)"
+        ]
+      },
+      "field-focus": {
+        "role": "neutral",
+        "displayName": "Field Focus",
+        "tonalRamp": [
+          "oklch(15.00% 0.0271 129.70)",
+          "oklch(26.43% 0.0502 129.70)",
+          "oklch(37.86% 0.0696 129.70)",
+          "oklch(49.29% 0.0773 129.70)",
+          "oklch(60.71% 0.0773 129.70)",
+          "oklch(72.14% 0.0696 129.70)",
+          "oklch(83.57% 0.0464 129.70)",
+          "oklch(95.00% 0.0193 129.70)"
+        ]
+      },
+      "field-focus-halo": {
+        "role": "neutral",
+        "displayName": "Field Focus Halo",
+        "tonalRamp": [
+          "oklch(15.00% 0.0109 127.04)",
+          "oklch(26.43% 0.0202 127.04)",
+          "oklch(37.86% 0.0279 127.04)",
+          "oklch(49.29% 0.0310 127.04)",
+          "oklch(60.71% 0.0310 127.04)",
+          "oklch(72.14% 0.0279 127.04)",
+          "oklch(83.57% 0.0186 127.04)",
+          "oklch(95.00% 0.0078 127.04)"
+        ]
+      },
+      "nav-text": {
+        "role": "neutral",
+        "displayName": "Nav Text",
+        "tonalRamp": [
+          "oklch(15.00% 0.0045 156.94)",
+          "oklch(26.43% 0.0084 156.94)",
+          "oklch(37.86% 0.0116 156.94)",
+          "oklch(49.29% 0.0129 156.94)",
+          "oklch(60.71% 0.0129 156.94)",
+          "oklch(72.14% 0.0116 156.94)",
+          "oklch(83.57% 0.0077 156.94)",
+          "oklch(95.00% 0.0032 156.94)"
+        ]
+      },
+      "nav-hover": {
+        "role": "neutral",
+        "displayName": "Nav Hover",
+        "tonalRamp": [
+          "oklch(15.00% 0.0053 169.28)",
+          "oklch(26.43% 0.0098 169.28)",
+          "oklch(37.86% 0.0136 169.28)",
+          "oklch(49.29% 0.0151 169.28)",
+          "oklch(60.71% 0.0151 169.28)",
+          "oklch(72.14% 0.0136 169.28)",
+          "oklch(83.57% 0.0090 169.28)",
+          "oklch(95.00% 0.0038 169.28)"
+        ]
+      },
+      "nav-active": {
+        "role": "neutral",
+        "displayName": "Nav Active",
+        "tonalRamp": [
+          "oklch(15.00% 0.0069 153.80)",
+          "oklch(26.43% 0.0128 153.80)",
+          "oklch(37.86% 0.0177 153.80)",
+          "oklch(49.29% 0.0197 153.80)",
+          "oklch(60.71% 0.0197 153.80)",
+          "oklch(72.14% 0.0177 153.80)",
+          "oklch(83.57% 0.0118 153.80)",
+          "oklch(95.00% 0.0049 153.80)"
+        ]
+      },
+      "nav-active-text": {
+        "role": "neutral",
+        "displayName": "Nav Active Text",
+        "tonalRamp": [
+          "oklch(15.00% 0.0185 126.01)",
+          "oklch(26.43% 0.0343 126.01)",
+          "oklch(37.86% 0.0475 126.01)",
+          "oklch(49.29% 0.0528 126.01)",
+          "oklch(60.71% 0.0528 126.01)",
+          "oklch(72.14% 0.0475 126.01)",
+          "oklch(83.57% 0.0317 126.01)",
+          "oklch(95.00% 0.0132 126.01)"
+        ]
+      },
+      "export": {
+        "role": "primary",
+        "displayName": "Export",
+        "tonalRamp": [
+          "oklch(15.00% 0.0079 157.81)",
+          "oklch(26.43% 0.0146 157.81)",
+          "oklch(37.86% 0.0202 157.81)",
+          "oklch(49.29% 0.0225 157.81)",
+          "oklch(60.71% 0.0225 157.81)",
+          "oklch(72.14% 0.0202 157.81)",
+          "oklch(83.57% 0.0135 157.81)",
+          "oklch(95.00% 0.0056 157.81)"
+        ]
+      },
+      "export-hover": {
+        "role": "primary",
+        "displayName": "Export Hover",
+        "tonalRamp": [
+          "oklch(15.00% 0.0140 142.22)",
+          "oklch(26.43% 0.0260 142.22)",
+          "oklch(37.86% 0.0360 142.22)",
+          "oklch(49.29% 0.0400 142.22)",
+          "oklch(60.71% 0.0400 142.22)",
+          "oklch(72.14% 0.0360 142.22)",
+          "oklch(83.57% 0.0240 142.22)",
+          "oklch(95.00% 0.0100 142.22)"
+        ]
+      },
+      "lilac": {
+        "role": "secondary",
+        "displayName": "Lilac",
+        "tonalRamp": [
+          "oklch(15.00% 0.0145 296.24)",
+          "oklch(26.43% 0.0269 296.24)",
+          "oklch(37.86% 0.0372 296.24)",
+          "oklch(49.29% 0.0414 296.24)",
+          "oklch(60.71% 0.0414 296.24)",
+          "oklch(72.14% 0.0372 296.24)",
+          "oklch(83.57% 0.0248 296.24)",
+          "oklch(95.00% 0.0103 296.24)"
+        ]
+      },
+      "lilac-ink": {
+        "role": "secondary",
+        "displayName": "Lilac Ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.0236 297.04)",
+          "oklch(26.43% 0.0438 297.04)",
+          "oklch(37.86% 0.0607 297.04)",
+          "oklch(49.29% 0.0674 297.04)",
+          "oklch(60.71% 0.0674 297.04)",
+          "oklch(72.14% 0.0607 297.04)",
+          "oklch(83.57% 0.0404 297.04)",
+          "oklch(95.00% 0.0169 297.04)"
+        ]
+      },
+      "mint": {
+        "role": "secondary",
+        "displayName": "Mint",
+        "tonalRamp": [
+          "oklch(15.00% 0.0099 133.74)",
+          "oklch(26.43% 0.0184 133.74)",
+          "oklch(37.86% 0.0255 133.74)",
+          "oklch(49.29% 0.0284 133.74)",
+          "oklch(60.71% 0.0284 133.74)",
+          "oklch(72.14% 0.0255 133.74)",
+          "oklch(83.57% 0.0170 133.74)",
+          "oklch(95.00% 0.0071 133.74)"
+        ]
+      },
+      "mint-ink": {
+        "role": "secondary",
+        "displayName": "Mint Ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.0180 136.97)",
+          "oklch(26.43% 0.0334 136.97)",
+          "oklch(37.86% 0.0462 136.97)",
+          "oklch(49.29% 0.0514 136.97)",
+          "oklch(60.71% 0.0514 136.97)",
+          "oklch(72.14% 0.0462 136.97)",
+          "oklch(83.57% 0.0308 136.97)",
+          "oklch(95.00% 0.0128 136.97)"
+        ]
+      },
+      "night": {
+        "role": "secondary",
+        "displayName": "Night",
+        "tonalRamp": [
+          "oklch(15.00% 0.0042 171.01)",
+          "oklch(26.43% 0.0078 171.01)",
+          "oklch(37.86% 0.0108 171.01)",
+          "oklch(49.29% 0.0120 171.01)",
+          "oklch(60.71% 0.0120 171.01)",
+          "oklch(72.14% 0.0108 171.01)",
+          "oklch(83.57% 0.0072 171.01)",
+          "oklch(95.00% 0.0030 171.01)"
+        ]
+      },
+      "night-ink": {
+        "role": "secondary",
+        "displayName": "Night Ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.0061 131.87)",
+          "oklch(26.43% 0.0114 131.87)",
+          "oklch(37.86% 0.0158 131.87)",
+          "oklch(49.29% 0.0175 131.87)",
+          "oklch(60.71% 0.0175 131.87)",
+          "oklch(72.14% 0.0158 131.87)",
+          "oklch(83.57% 0.0105 131.87)",
+          "oklch(95.00% 0.0044 131.87)"
+        ]
+      },
+      "scene-hook": {
+        "role": "secondary",
+        "displayName": "Scene Hook",
+        "tonalRamp": [
+          "oklch(15.00% 0.0078 302.93)",
+          "oklch(26.43% 0.0145 302.93)",
+          "oklch(37.86% 0.0201 302.93)",
+          "oklch(49.29% 0.0223 302.93)",
+          "oklch(60.71% 0.0223 302.93)",
+          "oklch(72.14% 0.0201 302.93)",
+          "oklch(83.57% 0.0134 302.93)",
+          "oklch(95.00% 0.0056 302.93)"
+        ]
+      },
+      "scene-problem": {
+        "role": "secondary",
+        "displayName": "Scene Problem",
+        "tonalRamp": [
+          "oklch(15.00% 0.0081 75.86)",
+          "oklch(26.43% 0.0151 75.86)",
+          "oklch(37.86% 0.0209 75.86)",
+          "oklch(49.29% 0.0232 75.86)",
+          "oklch(60.71% 0.0232 75.86)",
+          "oklch(72.14% 0.0209 75.86)",
+          "oklch(83.57% 0.0139 75.86)",
+          "oklch(95.00% 0.0058 75.86)"
+        ]
+      },
+      "scene-solution": {
+        "role": "secondary",
+        "displayName": "Scene Solution",
+        "tonalRamp": [
+          "oklch(15.00% 0.0073 134.09)",
+          "oklch(26.43% 0.0136 134.09)",
+          "oklch(37.86% 0.0188 134.09)",
+          "oklch(49.29% 0.0209 134.09)",
+          "oklch(60.71% 0.0209 134.09)",
+          "oklch(72.14% 0.0188 134.09)",
+          "oklch(83.57% 0.0126 134.09)",
+          "oklch(95.00% 0.0052 134.09)"
+        ]
+      },
+      "scene-cta": {
+        "role": "secondary",
+        "displayName": "Scene Cta",
+        "tonalRamp": [
+          "oklch(15.00% 0.0054 257.20)",
+          "oklch(26.43% 0.0100 257.20)",
+          "oklch(37.86% 0.0139 257.20)",
+          "oklch(49.29% 0.0154 257.20)",
+          "oklch(60.71% 0.0154 257.20)",
+          "oklch(72.14% 0.0139 257.20)",
+          "oklch(83.57% 0.0093 257.20)",
+          "oklch(95.00% 0.0039 257.20)"
+        ]
+      },
+      "chapter-hook": {
+        "role": "secondary",
+        "displayName": "Chapter Hook",
+        "tonalRamp": [
+          "oklch(15.00% 0.0074 304.02)",
+          "oklch(26.43% 0.0137 304.02)",
+          "oklch(37.86% 0.0190 304.02)",
+          "oklch(49.29% 0.0211 304.02)",
+          "oklch(60.71% 0.0211 304.02)",
+          "oklch(72.14% 0.0190 304.02)",
+          "oklch(83.57% 0.0127 304.02)",
+          "oklch(95.00% 0.0053 304.02)"
+        ]
+      },
+      "chapter-problem": {
+        "role": "secondary",
+        "displayName": "Chapter Problem",
+        "tonalRamp": [
+          "oklch(15.00% 0.0082 75.85)",
+          "oklch(26.43% 0.0152 75.85)",
+          "oklch(37.86% 0.0210 75.85)",
+          "oklch(49.29% 0.0233 75.85)",
+          "oklch(60.71% 0.0233 75.85)",
+          "oklch(72.14% 0.0210 75.85)",
+          "oklch(83.57% 0.0140 75.85)",
+          "oklch(95.00% 0.0058 75.85)"
+        ]
+      },
+      "chapter-solution": {
+        "role": "secondary",
+        "displayName": "Chapter Solution",
+        "tonalRamp": [
+          "oklch(15.00% 0.0086 129.90)",
+          "oklch(26.43% 0.0160 129.90)",
+          "oklch(37.86% 0.0221 129.90)",
+          "oklch(49.29% 0.0246 129.90)",
+          "oklch(60.71% 0.0246 129.90)",
+          "oklch(72.14% 0.0221 129.90)",
+          "oklch(83.57% 0.0147 129.90)",
+          "oklch(95.00% 0.0061 129.90)"
+        ]
+      },
+      "chapter-cta": {
+        "role": "secondary",
+        "displayName": "Chapter Cta",
+        "tonalRamp": [
+          "oklch(15.00% 0.0048 258.35)",
+          "oklch(26.43% 0.0090 258.35)",
+          "oklch(37.86% 0.0124 258.35)",
+          "oklch(49.29% 0.0138 258.35)",
+          "oklch(60.71% 0.0138 258.35)",
+          "oklch(72.14% 0.0124 258.35)",
+          "oklch(83.57% 0.0083 258.35)",
+          "oklch(95.00% 0.0034 258.35)"
+        ]
+      },
+      "connected": {
+        "role": "neutral",
+        "displayName": "Connected",
+        "tonalRamp": [
+          "oklch(15.00% 0.0088 126.55)",
+          "oklch(26.43% 0.0164 126.55)",
+          "oklch(37.86% 0.0227 126.55)",
+          "oklch(49.29% 0.0253 126.55)",
+          "oklch(60.71% 0.0253 126.55)",
+          "oklch(72.14% 0.0227 126.55)",
+          "oklch(83.57% 0.0152 126.55)",
+          "oklch(95.00% 0.0063 126.55)"
+        ]
+      },
+      "connected-text": {
+        "role": "neutral",
+        "displayName": "Connected Text",
+        "tonalRamp": [
+          "oklch(15.00% 0.0318 132.29)",
+          "oklch(26.43% 0.0591 132.29)",
+          "oklch(37.86% 0.0818 132.29)",
+          "oklch(49.29% 0.0909 132.29)",
+          "oklch(60.71% 0.0909 132.29)",
+          "oklch(72.14% 0.0818 132.29)",
+          "oklch(83.57% 0.0545 132.29)",
+          "oklch(95.00% 0.0227 132.29)"
+        ]
+      },
+      "pending": {
+        "role": "neutral",
+        "displayName": "Pending",
+        "tonalRamp": [
+          "oklch(15.00% 0.0052 80.71)",
+          "oklch(26.43% 0.0096 80.71)",
+          "oklch(37.86% 0.0133 80.71)",
+          "oklch(49.29% 0.0148 80.71)",
+          "oklch(60.71% 0.0148 80.71)",
+          "oklch(72.14% 0.0133 80.71)",
+          "oklch(83.57% 0.0089 80.71)",
+          "oklch(95.00% 0.0037 80.71)"
+        ]
+      },
+      "pending-text": {
+        "role": "neutral",
+        "displayName": "Pending Text",
+        "tonalRamp": [
+          "oklch(15.00% 0.0286 76.22)",
+          "oklch(26.43% 0.0531 76.22)",
+          "oklch(37.86% 0.0735 76.22)",
+          "oklch(49.29% 0.0817 76.22)",
+          "oklch(60.71% 0.0817 76.22)",
+          "oklch(72.14% 0.0735 76.22)",
+          "oklch(83.57% 0.0490 76.22)",
+          "oklch(95.00% 0.0204 76.22)"
+        ]
+      },
+      "error": {
+        "role": "neutral",
+        "displayName": "Error",
+        "tonalRamp": [
+          "oklch(15.00% 0.0060 35.34)",
+          "oklch(26.43% 0.0112 35.34)",
+          "oklch(37.86% 0.0154 35.34)",
+          "oklch(49.29% 0.0172 35.34)",
+          "oklch(60.71% 0.0172 35.34)",
+          "oklch(72.14% 0.0154 35.34)",
+          "oklch(83.57% 0.0103 35.34)",
+          "oklch(95.00% 0.0043 35.34)"
+        ]
+      },
+      "error-text": {
+        "role": "neutral",
+        "displayName": "Error Text",
+        "tonalRamp": [
+          "oklch(15.00% 0.0467 29.75)",
+          "oklch(26.43% 0.0868 29.75)",
+          "oklch(37.86% 0.1202 29.75)",
+          "oklch(49.29% 0.1335 29.75)",
+          "oklch(60.71% 0.1335 29.75)",
+          "oklch(72.14% 0.1202 29.75)",
+          "oklch(83.57% 0.0801 29.75)",
+          "oklch(95.00% 0.0334 29.75)"
+        ]
+      },
+      "modal-backdrop": {
+        "role": "neutral",
+        "displayName": "Modal backdrop",
+        "tonalRamp": [
+          "oklch(15% 0.0074 157.87)",
+          "oklch(26.43% 0.0138 157.87)",
+          "oklch(37.86% 0.0191 157.87)",
+          "oklch(49.29% 0.0212 157.87)",
+          "oklch(60.71% 0.0212 157.87)",
+          "oklch(72.14% 0.0191 157.87)",
+          "oklch(83.57% 0.0127 157.87)",
+          "oklch(95% 0.0053 157.87)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "headline": {
+        "displayName": "Page headline",
+        "purpose": "Primary page heading; responsive sizes remain in CSS."
+      },
+      "title": {
+        "displayName": "Panel title",
+        "purpose": "Editor and settings section headings."
+      },
+      "small-title": {
+        "displayName": "Small title",
+        "purpose": "Subsection headings and list titles."
+      },
+      "body": {
+        "displayName": "Interface body",
+        "purpose": "Base Manrope text throughout the workspace."
+      },
+      "script-body": {
+        "displayName": "Script copy",
+        "purpose": "Editable scene text."
+      },
+      "button": {
+        "displayName": "Action label",
+        "purpose": "Standard primary and secondary controls."
+      },
+      "label": {
+        "displayName": "Field label",
+        "purpose": "Compact labels for product and script controls."
+      },
+      "navigation-label": {
+        "displayName": "Navigation section",
+        "purpose": "Uppercase workspace section labels."
+      }
+    },
+    "shadows": [
+      {
+        "name": "video-frame",
+        "value": "0 8px 24px #32294019",
+        "purpose": "Subtle depth around the vertical video."
+      },
+      {
+        "name": "selected-duration",
+        "value": "0 2px 5px #26391c0c",
+        "purpose": "Selected duration segment."
+      },
+      {
+        "name": "toggle-thumb",
+        "value": "0 1px 2px #23322420",
+        "purpose": "Toggle thumb separation."
+      },
+      {
+        "name": "mobile-drawer",
+        "value": "15px 0 45px #1722183d",
+        "purpose": "Navigation above the mobile workspace."
+      },
+      {
+        "name": "field-focus",
+        "value": "0 0 0 3px #e5efd9",
+        "purpose": "Text field focus indication."
+      },
+      {
+        "name": "confirmation-dialog",
+        "value": "0 16px 70px #1b302b38",
+        "purpose": "Elevates the native modal above the dimmed workspace."
+      }
+    ],
+    "motion": [
+      {
+        "name": "input-border",
+        "value": "border-color .15s",
+        "purpose": "Text field border response."
+      },
+      {
+        "name": "toggle-thumb",
+        "value": "translate .15s",
+        "purpose": "Thumb movement between off and on."
+      },
+      {
+        "name": "mobile-drawer",
+        "value": "translate .2s",
+        "purpose": "Off-canvas navigation."
+      },
+      {
+        "name": "render-progress",
+        "value": "width .5s",
+        "purpose": "Render progress updates."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}.spin{animation:none}}",
+        "purpose": "Disable interface transitions, smooth scrolling and loading-spin animation."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide-min",
+        "value": "1500px"
+      },
+      {
+        "name": "desktop-max",
+        "value": "1200px"
+      },
+      {
+        "name": "compact-max",
+        "value": "980px"
+      },
+      {
+        "name": "drawer-max",
+        "value": "800px"
+      },
+      {
+        "name": "stack-max",
+        "value": "650px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary creation button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Lime action used to import a product or create a script.",
+      "html": "<button class=\"ds-primary\">Mahsulotni olish <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14m-7-7 7 7-7 7\"/></svg></button>",
+      "css": ".ds-primary{font-family:var(--font,'Manrope',sans-serif);display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:8px;min-height:40px;padding:10px 16px;font-size:11px;font-weight:750;background:var(--green,#d7f594);color:#2b3928;cursor:pointer}.ds-primary:hover:not(:disabled){background:#caee81}.ds-primary:disabled{opacity:.48;cursor:not-allowed}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-export:focus-visible,.ds-icon:focus-visible,.ds-text:focus-visible,.ds-nav-item:focus-visible,.ds-scene-number:focus-visible,.ds-chapter:focus-visible{outline:3px solid #7c9364;outline-offset:3px;}"
+    },
+    {
+      "name": "Secondary button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Bordered action for supporting edits and downloads.",
+      "html": "<button class=\"ds-secondary\">Rasm yuklash</button>",
+      "css": ".ds-secondary{font-family:var(--font,'Manrope',sans-serif);display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid #dfe5e0;border-radius:8px;min-height:40px;padding:10px 16px;font-size:11px;font-weight:750;background:var(--surface,#fff);color:var(--ink,#262c2c);cursor:pointer}.ds-secondary:hover:not(:disabled){background:#f1f5ee}.ds-secondary:disabled{opacity:.48;cursor:not-allowed}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-export:focus-visible,.ds-icon:focus-visible,.ds-text:focus-visible,.ds-nav-item:focus-visible,.ds-scene-number:focus-visible,.ds-chapter:focus-visible{outline:3px solid #7c9364;outline-offset:3px;}"
+    },
+    {
+      "name": "Export button",
+      "kind": "button",
+      "refersTo": "button-export",
+      "description": "Forest final action beneath the preview, with a credit badge.",
+      "html": "<button class=\"ds-export\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3v12m-5-5 5 5 5-5M5 21h14\"/></svg>MP4 eksport qilish <span>1 kredit</span></button>",
+      "css": ".ds-export{font-family:var(--font,'Manrope',sans-serif);width:100%;display:flex;align-items:center;justify-content:center;gap:8px;border:0;background:#28352d;color:white;border-radius:8px;min-height:44px;font-size:11px;font-weight:700;cursor:pointer}.ds-export:hover:not(:disabled){background:#3c4e3a}.ds-export>span{font-size:8px;background:#46593f;padding:4px 6px;border-radius:4px;color:#d5e8bd;margin-left:3px;font-weight:500}.ds-export:disabled{opacity:.48;cursor:not-allowed}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-export:focus-visible,.ds-icon:focus-visible,.ds-text:focus-visible,.ds-nav-item:focus-visible,.ds-scene-number:focus-visible,.ds-chapter:focus-visible{outline:3px solid #7c9364;outline-offset:3px;}"
+    },
+    {
+      "name": "Icon action",
+      "kind": "button",
+      "refersTo": "button-icon",
+      "description": "Compact accessible action for saving a project.",
+      "html": "<button class=\"ds-icon\" aria-label=\"Loyihani saqlash\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12l4 4v12a2 2 0 0 1-2 2Z\"/><path d=\"M17 21v-8H7v8M7 3v5h8\"/></svg></button>",
+      "css": ".ds-icon{height:34px;width:34px;display:inline-flex;align-items:center;justify-content:center;border:0;background:none;border-radius:7px;color:#727c75;cursor:pointer}.ds-icon:hover{background:#edf2e8;color:#364c2c}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-export:focus-visible,.ds-icon:focus-visible,.ds-text:focus-visible,.ds-nav-item:focus-visible,.ds-scene-number:focus-visible,.ds-chapter:focus-visible{outline:3px solid #7c9364;outline-offset:3px;}"
+    },
+    {
+      "name": "Text action",
+      "kind": "button",
+      "refersTo": "button-text",
+      "description": "Low-emphasis supporting action with an underline on hover.",
+      "html": "<button class=\"ds-text\">Qayta yaratish <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14m-7-7 7 7-7 7\"/></svg></button>",
+      "css": ".ds-text{font-family:var(--font,'Manrope',sans-serif);display:inline-flex;align-items:center;justify-content:center;gap:6px;color:#526b40;font-size:10px;font-weight:650;padding:3px 0;border:0;background:none;cursor:pointer}.ds-text:hover{text-decoration:underline;text-underline-offset:3px}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-export:focus-visible,.ds-icon:focus-visible,.ds-text:focus-visible,.ds-nav-item:focus-visible,.ds-scene-number:focus-visible,.ds-chapter:focus-visible{outline:3px solid #7c9364;outline-offset:3px;}"
+    },
+    {
+      "name": "Product text field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Labeled product input with the implemented placeholder and focus treatment.",
+      "html": "<label class=\"ds-field\"><span>Mahsulot nomi</span><input class=\"ds-input\" placeholder=\"Mahsulotingiz nomi\"/></label>",
+      "css": ".ds-field{font-family:var(--font,'Manrope',sans-serif);display:flex;flex-direction:column;gap:8px}.ds-field>span{font-size:10px;font-weight:700;color:#626a64}.ds-input{font-family:var(--font,'Manrope',sans-serif);width:100%;min-width:0;padding:11px 13px;border:1px solid #dfe4e2;border-radius:8px;background:var(--surface,#fff);color:var(--ink,#262c2c);font-size:11px;transition:border-color .15s}.ds-input::placeholder{color:#656d67}.ds-input:focus,.ds-input:focus-visible{outline:0;border-color:#9db783;box-shadow:0 0 0 3px #e5efd9}@media(prefers-reduced-motion:reduce){.ds-input{transition:none}}"
+    },
+    {
+      "name": "Forest navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Selected workspace navigation with lime icon and readable active label.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Ish maydoni\"><p class=\"ds-nav-label\">ISH MAYDONI</p><button class=\"ds-nav-item ds-nav-selected\" aria-current=\"page\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"20\" height=\"20\" x=\"2\" y=\"2\" rx=\"2\"/><path d=\"M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5\"/></svg>Video studiyo</button><button class=\"ds-nav-item\">Loyihalarim</button></nav>",
+      "css": ".ds-nav{font-family:var(--font,'Manrope',sans-serif);background:var(--dark,#232b2b);padding:18px;border-radius:8px}.ds-nav-label{font-size:9px;letter-spacing:1.6px;font-weight:700;color:#a4afa9;padding:0 14px;margin:0 0 12px}.ds-nav-item{font-family:var(--font,'Manrope',sans-serif);display:flex;align-items:center;gap:12px;width:100%;text-align:left;color:#bec7c1;padding:13px;border:0;border-radius:8px;margin:4px 0;font-size:13px;font-weight:600;background:none;cursor:pointer}.ds-nav-item:hover{background:#303a36;color:white}.ds-nav-item.ds-nav-selected{background:#3a453d;color:#e5f5cf}.ds-nav-selected svg{color:var(--green,#d7f594)}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-export:focus-visible,.ds-icon:focus-visible,.ds-text:focus-visible,.ds-nav-item:focus-visible,.ds-scene-number:focus-visible,.ds-chapter:focus-visible{outline:3px solid #7c9364;outline-offset:3px;}"
+    },
+    {
+      "name": "Service status chips",
+      "kind": "chip",
+      "refersTo": "status-connected",
+      "description": "Text-backed connected and pending states; these are informational, not buttons.",
+      "html": "<div class=\"ds-statuses\"><span class=\"ds-status ds-connected\">Ulangan</span><span class=\"ds-status\">Sozlash kerak</span></div>",
+      "css": ".ds-statuses{display:flex;gap:8px}.ds-status{font-family:var(--font,'Manrope',sans-serif);font-size:9px;font-weight:600;background:#f4eee4;color:#8c6a36;padding:6px 8px;border-radius:5px;white-space:nowrap}.ds-status.ds-connected{background:#eaf2e0;color:#527138}"
+    },
+    {
+      "name": "Editor panel",
+      "kind": "card",
+      "refersTo": "editor-panel",
+      "description": "Flat white bordered container with a compact title and muted footer.",
+      "html": "<section class=\"ds-panel\"><div class=\"ds-panel-heading\"><h2>Reklamangizni yarating</h2><span>Yangi loyiha</span></div><div class=\"ds-panel-body\">Matnni o‘zgartiring — prevyuda darhol ko‘rinadi.</div><div class=\"ds-panel-footer\">Sinov mahsuloti bilan boshlang</div></section>",
+      "css": ".ds-panel{font-family:var(--font,'Manrope',sans-serif);background:var(--surface,#fff);color:var(--ink,#262c2c);border:1px solid var(--line,#e8ebec);border-radius:var(--radius,14px);overflow:hidden}.ds-panel-heading{padding:22px 24px 20px}.ds-panel-heading h2{margin:0;font-size:17px;letter-spacing:-.4px;font-weight:750}.ds-panel-heading span{display:block;font-size:10px;color:var(--muted,#707779);margin-top:6px}.ds-panel-body{padding:22px 24px 15px;font-size:11px;color:#616c62}.ds-panel-footer{background:#fafbf9;padding:13px 24px;border-top:1px solid var(--line,#e8ebec);font-size:9px;color:#616c62}"
+    },
+    {
+      "name": "Four-scene editor and chapter timeline",
+      "kind": "custom",
+      "refersTo": "chapter-hook",
+      "description": "Static specimen of the synchronized current-scene state. Production buttons seek the live player; this snippet has no playback runtime.",
+      "html": "<section class=\"ds-story\"><div class=\"ds-scene\"><button class=\"ds-scene-number\" aria-label=\"1-sahnani ko‘rish\">01</button><div class=\"ds-scene-content\"><div class=\"ds-scene-label\"><label for=\"ds-scene-copy\">Hook</label><span>0:00 – 0:03</span></div><textarea class=\"ds-scene-copy\" id=\"ds-scene-copy\">Mahsulotingiz. Yangi hikoya.</textarea></div></div><div class=\"ds-timeline\" aria-label=\"Sahnalar ketma-ketligi\"><button class=\"ds-chapter ds-hook ds-active\">Hook</button><button class=\"ds-chapter ds-problem\">Muammo</button><button class=\"ds-chapter ds-solution\">Yechim</button><button class=\"ds-chapter ds-cta\">CTA</button></div></section>",
+      "css": ".ds-story{font-family:var(--font,'Manrope',sans-serif);color:var(--ink,#262c2c)}.ds-scene{display:flex;align-items:flex-start;gap:11px}.ds-scene-number{font-family:var(--font,'Manrope',sans-serif);width:30px;min-width:30px;height:30px;border:0;border-radius:7px;font-size:10px;font-weight:750;margin-top:1px;background:#ede7f7;color:#786297;outline:1px solid currentColor;outline-offset:2px;cursor:pointer}.ds-scene-content{flex:1;min-width:0}.ds-scene-label{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 7px;height:20px}.ds-scene-label label{font-size:11px;font-weight:750}.ds-scene-label span{font-size:9px;color:#616c62;font-variant-numeric:tabular-nums}.ds-scene-copy{font-family:var(--font,'Manrope',sans-serif);width:100%;font-size:11px;line-height:1.7;padding:10px 12px;border:1px solid #e7eae6;min-height:58px;resize:vertical;border-radius:7px;background:white;color:var(--ink,#262c2c)}.ds-scene-copy:focus,.ds-scene-copy:focus-visible{outline:0;border-color:#99af83;box-shadow:0 0 0 3px #e5efd9}.ds-timeline{display:flex;gap:4px;margin:17px 0 19px;height:32px}.ds-chapter{font-family:var(--font,'Manrope',sans-serif);border:0;border-radius:4px;flex:1;font-size:8px;font-weight:650;color:#646d62;position:relative;min-width:0;cursor:pointer}.ds-hook{background:#e8e2f1}.ds-problem{background:#f1e6d7}.ds-solution{background:#e2ebda;flex:1.4}.ds-cta{background:#e2e8f1}.ds-active:after{content:'';height:3px;background:#7d8a6c;position:absolute;bottom:0;left:0;right:0;border-radius:2px}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-export:focus-visible,.ds-icon:focus-visible,.ds-text:focus-visible,.ds-nav-item:focus-visible,.ds-scene-number:focus-visible,.ds-chapter:focus-visible{outline:3px solid #7c9364;outline-offset:3px;}"
+    },
+    {
+      "name": "Confirmation dialog",
+      "kind": "custom",
+      "refersTo": "confirmation-dialog",
+      "description": "Native modal confirmation with cancel initially focused, Escape cancellation, and focus restoration after dismissal. The open specimen displays the surface without a modal runtime; its backdrop CSS applies when production calls showModal().",
+      "html": "<dialog open class=\"ds-confirm-dialog\" aria-labelledby=\"ds-confirmation-title\"><h2 id=\"ds-confirmation-title\">O‘zgarishni tasdiqlang</h2><p>Saqlanmagan o‘zgarishlar bor. Davom etilsinmi?</p><div class=\"ds-confirm-actions\"><button autofocus class=\"ds-confirm-secondary\">Bekor qilish</button><button class=\"ds-confirm-primary\">Davom etish</button></div></dialog>",
+      "css": ".ds-confirm-dialog{font-family:var(--font,'Manrope',sans-serif);border:0;border-radius:14px;padding:28px;background:#fff;color:var(--ink,#262c2c);width:min(420px,calc(100vw - 36px));box-shadow:0 16px 70px #1b302b38}.ds-confirm-dialog::backdrop{background:#16251d80}.ds-confirm-dialog h2{margin:0;font-size:17px;letter-spacing:-.4px;font-weight:750}.ds-confirm-dialog p{font-size:13px;line-height:1.8;color:#616c62;margin:14px 0 23px}.ds-confirm-actions{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}.ds-confirm-primary,.ds-confirm-secondary{font-family:var(--font,'Manrope',sans-serif);display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:8px;min-height:40px;padding:10px 16px;font-size:11px;font-weight:750;white-space:nowrap;cursor:pointer}.ds-confirm-primary{border:0;background:var(--green,#d7f594);color:#2b3928}.ds-confirm-primary:hover:not(:disabled){background:#caee81}.ds-confirm-secondary{background:white;color:var(--ink,#262c2c);border:1px solid #dfe5e0}.ds-confirm-secondary:hover:not(:disabled){background:#f1f5ee}.ds-confirm-primary:focus-visible,.ds-confirm-secondary:focus-visible{outline:3px solid #7c9364;outline-offset:3px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Operate",
+    "overview": "Operate is the implementation-derived direction for AdClone Studio: dark forest navigation frames a warm white working area, with lime actions and restrained pastel chapter markers. It is a compact, practical editing workspace whose visual hierarchy keeps the product, script, and resulting vertical video together. The name describes the implemented system; it is not a claim of subjective user approval.\n\nThe distinctive interaction is a four-scene script connected to a synchronized chapter timeline. Numbered script rows, time ranges, matching chapter colors, and a live 9:16 preview make editing concrete. The Uzbek interface uses clear product language and visible service states. PRODUCT.md records the confirmed customer SaaS direction, Vercel + Supabase target, and keyless local trial; those commitments inform truthful status labels, not a separate visual theme.",
+    "keyCharacteristics": [
+      "Dark forest navigation, white panels, and a lightly tinted workspace.",
+      "Lime creation actions and a darker export action.",
+      "Locally served Manrope with compact labels and Lucide outline icons.",
+      "Four editable scenes synchronized with the preview chapter timeline.",
+      "Border-led surfaces, limited shadows, and explicit keyboard focus."
+    ],
+    "rules": [],
+    "dos": [
+      "Do retain the dark navigation, pale workspace, and white panel hierarchy.",
+      "Do use lime for primary creation actions and forest for MP4 export.",
+      "Do preserve the four scene colors, labels, time ranges, and synchronized active states.",
+      "Do use locally served Manrope and Lucide outline icons with accessible names on icon-only actions.",
+      "Do apply the final secondary-text and placeholder overrides, visible focus, and reduced-motion behavior.",
+      "Do label sample content, keyless mode, provider availability, and render state truthfully."
+    ],
+    "donts": [
+      "Don't describe this implementation-derived direction as a user-approved visual choice.",
+      "Don't turn the pastel video themes into the global application chrome.",
+      "Don't add ambient shadows to every panel; use borders and tonal separation for ordinary surfaces.",
+      "Don't rely on color alone for chapters, selection, errors, or service availability.",
+      "Don't replace the synchronized chapter controls with a decorative timeline.",
+      "Don't imply that unconfigured AI providers or billing are active."
+    ]
+  }
+}

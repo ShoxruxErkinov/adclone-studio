@@ -1,0 +1,11 @@
+# Dependencies, generated outputs, and local-only configuration
+node_modules/
+.next/
+.data/
+.env*
+!.env.example
+.vercel/
+*.log
+*.tsbuildinfo
+.DS_Store
+Thumbs.db
