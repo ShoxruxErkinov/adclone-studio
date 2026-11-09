@@ -6,6 +6,7 @@ import {AdComposition} from '@/video/AdComposition';
 import {api,authHeaders,browserAuth} from '@/lib/browser';
 import {createDraft,demoProduct,presetProducts,languages,roleLabels,sceneBoundaries,scriptText,videoDuration,type AppState,type Language,type Project,type ProjectInput} from '@/lib/model';
 import {OddityHero} from '@/components/OddityHero';
+import {VisionGlassCursor} from '@/components/VisionGlassCursor';
 
 type View='hero'|'studio'|'projects'|'exports'|'settings'|'account';
 type Tab='product'|'script'|'style'|'voice';
@@ -74,6 +75,7 @@ export function Studio(){
     ['exports',ArrowDownToLine,'Eksportlar']
   ];
   return <div className="app-shell iso-grid-bg">
+    <VisionGlassCursor/>
     {confirmation&&<Confirmation message={confirmation.message} onResolve={value=>{confirmation.resolve(value);setConfirmation(null);}}/>}
     {mobileNav&&<button className="nav-scrim" aria-label="Menyuni yopish" tabIndex={-1} onClick={()=>setMobileNav(false)}/>}
     <aside id="workspace-navigation" ref={menuPanel} className={`sidebar ${mobileNav?'mobile-open':''}`}>

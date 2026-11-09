@@ -1582,3 +1582,69 @@ main {
     display: inline-flex !important;
   }
 }
+
+/* ==========================================================================
+   APPLE VISION PRO SLEEK LIQUID GLASS CURSOR
+   ========================================================================== */
+.vision-cursor-ambient-glow {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9997;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.22) 0%, rgba(29, 40, 254, 0.08) 50%, transparent 75%);
+  filter: blur(8px);
+  will-change: transform;
+}
+
+.vision-glass-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(34, 211, 238, 0.12);
+  backdrop-filter: blur(6px) contrast(1.15) brightness(1.2);
+  -webkit-backdrop-filter: blur(6px) contrast(1.15) brightness(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 
+    0 0 16px rgba(0, 244, 254, 0.35),
+    inset 0 0 8px rgba(255, 255, 255, 0.5);
+  will-change: transform;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.vision-glass-specular-edge {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.55) 0%, transparent 60%);
+}
+
+.vision-glass-specular-glare {
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  width: 9px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  transform: rotate(-30deg);
+  filter: blur(0.5px);
+}
+
+.vision-cursor-center-dot {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 6px #22d3ee;
+  will-change: transform;
+  transition: opacity 0.15s ease;
+}
+
