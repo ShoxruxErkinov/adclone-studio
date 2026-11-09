@@ -81,10 +81,10 @@ export function Studio(){
     <aside id="workspace-navigation" ref={menuPanel} className={`sidebar ${mobileNav?'mobile-open':''}`}>
       <button className="nav-close icon-button" aria-label="Navigatsiyani yopish" onClick={()=>setMobileNav(false)}><X size={19}/></button>
       <a className="brand" href="/" aria-label="AdClone Studio bosh sahifa" onClick={e=>{e.preventDefault();navigate('hero');}}>
-        <span className="brand-mark logo-sheen" style={{padding:2,background:'transparent',rotate:'0deg',width:42,height:42,display:'flex',alignItems:'center',justifyContent:'center'}}>
-          <img src="/brand/logo-glass.png" alt="AdClone" style={{width:'100%',height:'100%',objectFit:'contain'}} />
+        <span className="brand-mark">
+          <img src="/brand/logo-mark-clean.png" alt="AdClone" style={{width:38,height:38,objectFit:'contain',filter:'drop-shadow(0 0 12px rgba(34, 211, 238, 0.5))'}} />
         </span>
-        <span>adclone<span className="brand-sub">STUDIO</span></span>
+        <span className="brand-title">adclone<span className="brand-sub">STUDIO</span></span>
       </a>
       <button className="new-project" onClick={()=>reset()}><Plus size={18}/> Yangi loyiha</button>
       <div className="nav-section">ISH MAYDONI</div>
