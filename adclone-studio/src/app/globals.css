@@ -1584,6 +1584,267 @@ main {
 }
 
 /* ==========================================================================
+   LIQUID GLASS ACCOUNT / AUTH PANEL (LOGIN & SIGNUP)
+   ========================================================================== */
+.account-panel {
+  max-width: 460px;
+  margin: 50px auto;
+  background: rgba(14, 20, 58, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-radius: 20px;
+  padding: 42px 36px;
+  text-align: center;
+  box-shadow: 
+    0 24px 60px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.account-panel::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: 120px;
+  background: radial-gradient(ellipse, rgba(34, 211, 238, 0.25) 0%, transparent 70%);
+  filter: blur(24px);
+  pointer-events: none;
+}
+
+.account-icon {
+  width: 68px;
+  height: 68px;
+  background: rgba(34, 211, 238, 0.15);
+  color: #22d3ee;
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  box-shadow: 0 0 24px rgba(34, 211, 238, 0.25);
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  margin: 0 auto 24px;
+}
+
+.account-panel h1 {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.account-panel > p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #94a3b8;
+  margin: 16px 0 24px;
+}
+
+.account-panel form {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.account-panel .field span {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #cbd5e1;
+  margin-bottom: 6px;
+}
+
+.account-panel input {
+  background: rgba(10, 14, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 13px 16px;
+  font-size: 13px;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.account-panel input:focus {
+  border-color: #22d3ee;
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.25);
+  outline: none;
+}
+
+.account-panel .primary.full {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #1d28fe 0%, #00f4fe 100%);
+  color: #030826;
+  border-radius: 10px;
+  min-height: 46px;
+  font-size: 13px;
+  font-weight: 800;
+  box-shadow: 0 0 20px rgba(0, 244, 254, 0.35);
+  margin-top: 6px;
+  transition: all 0.2s ease;
+}
+
+.account-panel .primary.full:hover {
+  box-shadow: 0 0 30px rgba(0, 244, 254, 0.6);
+  transform: translateY(-1px);
+}
+
+.account-panel .secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f1f5f9;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-weight: 700;
+  font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+.account-panel .secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.account-panel .text-button.full {
+  width: 100%;
+  text-align: center;
+  color: #38bdf8;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px;
+  margin-top: 4px;
+  transition: color 0.15s ease;
+}
+
+.account-panel .text-button.full:hover {
+  color: #7dd3fc;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   SETTINGS PANEL (INTEGRATIONS & SETUP)
+   ========================================================================== */
+.settings-panel {
+  background: rgba(14, 20, 58, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 26px 30px;
+  margin-bottom: 24px;
+}
+.settings-panel > h2 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #f1f5f9;
+  margin-bottom: 18px;
+}
+.integration-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.integration-row:last-child {
+  border-bottom: none;
+}
+.integration-monogram {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: rgba(34, 211, 238, 0.15);
+  color: #22d3ee;
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  font-size: 18px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.integration-row > div {
+  flex: 1;
+  min-width: 0;
+}
+.integration-row h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0;
+}
+.integration-row p {
+  font-size: 11px;
+  color: #94a3b8;
+  margin: 4px 0 6px;
+}
+.integration-row code {
+  font-size: 10px;
+  font-family: monospace;
+  background: rgba(0, 0, 0, 0.4);
+  color: #38bdf8;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+.service-status {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(148, 163, 184, 0.15);
+  color: #94a3b8;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  white-space: nowrap;
+}
+.service-status.connected {
+  background: rgba(34, 211, 238, 0.2);
+  color: #22d3ee;
+  border-color: rgba(34, 211, 238, 0.4);
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.2);
+}
+.setup-note {
+  background: rgba(10, 14, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 24px 28px;
+  max-width: 850px;
+}
+.setup-note h2 {
+  font-size: 16px;
+  font-weight: 750;
+  color: #f1f5f9;
+  margin-bottom: 12px;
+}
+.setup-note p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #94a3b8;
+  margin-bottom: 12px;
+}
+.setup-note code {
+  font-size: 11px;
+  font-family: monospace;
+  background: rgba(0, 0, 0, 0.5);
+  color: #22d3ee;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* ==========================================================================
    APPLE VISION PRO SLEEK ZERO-LAG LIQUID GLASS CURSOR
    ========================================================================== */
 .vision-cursor-ambient-glow {
