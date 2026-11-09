@@ -32,6 +32,23 @@ export const demoProduct: Product = {
   price: '349 000 so‘m', sourceUrl: '', marketplace: 'Namuna', image: '/demo-product.jpg',
   features: ['Simsiz ulanish', 'Yumshoq quloq yostiqchalari', 'Ixcham dizayn'], demo: true
 };
+export const presetProducts: Record<string, Product> = {
+  sonic: {
+    title: 'Aura Sonic Cleanse', description: 'Ultrasonik yuz tozalash va mikromassaj qurilmasi. Teshiklarni chuqur tozalash va terini yoshartirish uchun.',
+    price: '289 000 so‘m', sourceUrl: 'https://uzum.uz/product/aura-sonic-cleanse-9902', marketplace: 'Uzum Market', image: '/demo-product.jpg',
+    features: ['Ultrasonik tebranish', 'Suv o‘tkazmaydigan IPX7 korpus', '3 xil tozalash rejimi'], demo: true
+  },
+  serum: {
+    title: 'Hydra Glow Ceramide Serum', description: 'Chuqur namlantiruvchi seramid va peptidli yuz zardobi. Quruqlik va nozik chiziqlarni bartaraf etadi.',
+    price: '$24.99', sourceUrl: 'https://amazon.com/dp/B08N5WRWNW-ceramide-serum', marketplace: 'Amazon', image: '/demo-product.jpg',
+    features: ['5 xil seramid kompleksi', 'Gialuron kislotasi', 'Hidsiz va hipoallergen'], demo: true
+  },
+  reel: {
+    title: 'Glow Peptide Dew', description: 'Kundalik tabiiy yorqinlik beruvchi peptide ekstrakti va organik botanik moylar majmuasi.',
+    price: '$38.00', sourceUrl: 'https://shopify.com/products/glow-peptide-dew', marketplace: 'Shopify', image: '/demo-product.jpg',
+    features: ['Botanical peptidlari', '100% vegan formula', '24 soatlik himoya'], demo: true
+  }
+};
 export function templateScenes(product: Product, language: Language, variant = 0): ProjectInput['scenes'] {
   const n = product.title;
   const copy: Record<Language, string[]> = {

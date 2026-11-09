@@ -4,9 +4,11 @@ import {Player,type PlayerRef} from '@remotion/player';
 import {ArrowDownToLine,ArrowLeft,ArrowRight,ArrowUpRight,AudioLines,Check,CheckCheck,ChevronRight,Clapperboard,Copy,FolderOpen,Globe2,ImagePlus,Layers,Link2,LoaderCircle,LogOut,Mail,Menu,MoreHorizontal,Music2,Palette,Play,Plus,Save,Scissors,Settings2,ShieldCheck,SlidersHorizontal,Sparkles,Trash2,Type,UserRound,Volume2,WandSparkles,X} from 'lucide-react';
 import {AdComposition} from '@/video/AdComposition';
 import {api,authHeaders,browserAuth} from '@/lib/browser';
-import {createDraft,demoProduct,languages,roleLabels,sceneBoundaries,scriptText,videoDuration,type AppState,type Language,type Project,type ProjectInput} from '@/lib/model';
+import {createDraft,demoProduct,presetProducts,languages,roleLabels,sceneBoundaries,scriptText,videoDuration,type AppState,type Language,type Project,type ProjectInput} from '@/lib/model';
+import {LiquidLens} from '@/components/LiquidLens';
+import {OddityHero} from '@/components/OddityHero';
 
-type View='studio'|'projects'|'exports'|'settings'|'account';
+type View='hero'|'studio'|'projects'|'exports'|'settings'|'account';
 type Tab='product'|'script'|'style'|'voice';
 const initial:AppState={projects:[],renders:[],credits:0,user:null,authConfigured:false,assetUrls:{},services:{gemini:false,voice:false,scraper:false,background:false,worker:false}};
 function IconButton({children,label,onClick,disabled=false}:{children:ReactNode;label:string;onClick:()=>void;disabled?:boolean}){return <button className="icon-button" type="button" aria-label={label} title={label} onClick={onClick} disabled={disabled}>{children}</button>;}
@@ -16,7 +18,8 @@ function Confirmation({message,onResolve}:{message:string;onResolve:(value:boole
 const seconds=(n:number)=>`0:${Math.floor(n).toString().padStart(2,'0')}`;
 
 export function Studio(){
-  const [view,setView]=useState<View>('studio'),[tab,setTab]=useState<Tab>('script');
+  const [view,setView]=useState<View>('hero'),[tab,setTab]=useState<Tab>('script');
+  const [lensActive,setLensActive]=useState(true);
   const [draft,setDraft]=useState<ProjectInput>(()=>createDraft()),[projectId,setProjectId]=useState<string>(),[dirty,setDirty]=useState(false);
   const [state,setState]=useState<AppState>(initial),[url,setUrl]=useState(''),[busy,setBusy]=useState(''),[notice,setNotice]=useState<{text:string;error:boolean}|null>(null);
   const [imageSrc,setImageSrc]=useState('/demo-product.jpg'),[voiceSrc,setVoiceSrc]=useState<string>(),[activeScene,setActiveScene]=useState(0),[search,setSearch]=useState('');
@@ -36,6 +39,27 @@ export function Studio(){
   const navigate=(next:View)=>{setView(next);setMobileNav(false);};
   const reset=async(product=demoProduct)=>{if(dirty&&!await askConfirm('Saqlanmagan o‘zgarishlar bor. Yangi loyiha ochilsinmi?'))return;revision.current++;setDraft(createDraft(product));setProjectId(undefined);setDirty(false);setUrl('');setTab('script');navigate('studio');};
   const open=async(p:Project)=>{if(dirty&&!await askConfirm('Saqlanmagan o‘zgarishlar bekor qilinsinmi?'))return;revision.current++;setDraft(p);setProjectId(p.id);setDirty(false);setView('studio');setTab('script');};
+  const handleSelectPreset=(presetUrl:string)=>{
+    setUrl(presetUrl);
+    let matched=Object.values(presetProducts).find(p=>p.sourceUrl===presetUrl);
+    if(!matched){
+      if(presetUrl.includes('uzum'))matched=presetProducts.sonic;
+      else if(presetUrl.includes('amazon'))matched=presetProducts.serum;
+      else if(presetUrl.includes('shopify'))matched=presetProducts.reel;
+    }
+    if(matched){
+      revision.current++;
+      setDraft(createDraft(matched,draft.language,draft.duration));
+      setProjectId(undefined);
+      setDirty(true);
+      setTab('product');
+      navigate('studio');
+      setNotice({text:`${matched.title} tanlandi. Ssenariy yaratishga tayyor!`,error:false});
+    }else{
+      navigate('studio');
+      void importLink();
+    }
+  };
   const importLink=()=>run('import',async()=>{if(!url.trim())throw new Error('Mahsulot havolasini kiriting.');if(dirty&&!await askConfirm('Saqlanmagan tahrirlar yangi mahsulot bilan almashtirilsinmi?'))return;const started=revision.current;const result=await api<{product:ProjectInput['product']}>({action:'import',url:url.trim()});if(started!==revision.current)throw new Error('Import paytida loyihani o‘zgartirdingiz. Tahrirlaringiz saqlandi; kerak bo‘lsa importni qayta boshlang.');const next=createDraft(result.product,draft.language,draft.duration);revision.current++;setDraft(next);setProjectId(undefined);setDirty(true);setTab('product');setNotice({text:'Mahsulot yuklandi. Narx va tavsifni tekshiring, keyin ssenariy yarating.',error:false});});
   const changeLanguage=(language:Language)=>run('script',async()=>{const started=revision.current;const result=await api<{scenes:ProjectInput['scenes'];source:ProjectInput['scriptSource']}>({action:'script',product:draft.product,language,duration:draft.duration});if(started!==revision.current)throw new Error('Ssenariy yaratilayotganda tahrir kiritildi. Tahrir saqlandi; tilni qayta tanlang.');update({language,scenes:result.scenes,scriptSource:result.source,voice:null});});
   const regenerate=()=>run('script',async()=>{const started=revision.current;const result=await api<{scenes:ProjectInput['scenes'];source:ProjectInput['scriptSource']}>({action:'script',product:draft.product,language:draft.language,duration:draft.duration,variant:++variant.current});if(started!==revision.current)throw new Error('Yangi tahrirlaringiz saqlandi. Ssenariyni qayta yaratishni yana bosing.');update({scenes:result.scenes,scriptSource:result.source,voice:null});setTab('script');setNotice({text:result.source==='gemini'?'AI ssenariy tayyor.':'Shablon ssenariy tayyor. Gemini ulanganda AI matn yozadi.',error:false});});
@@ -44,13 +68,24 @@ export function Studio(){
   const upload=(file:File)=>run('upload',async()=>{if(file.size>3500000)throw new Error('Rasm hajmi 3.5 MB dan oshmasin.');const form=new FormData();form.set('file',file);const res=await fetch('/api/upload',{method:'POST',headers:await authHeaders(),body:form});const data=await res.json();if(!res.ok)throw new Error(data.error);update({product:{...draft.product,image:data.image,demo:false},voice:null});});
   const authenticate=()=>run('auth',async()=>{const auth=browserAuth();if(!auth)throw new Error('Hisoblar uchun Supabase sozlamalarini kiriting. Mahalliy sinov hozir ishlaydi.');if(accountMode==='reset'){const {error}=await auth.auth.updateUser({password});if(error)throw error;setNotice({text:'Parol yangilandi.',error:false});setView('studio');return;}const result=accountMode==='login'?await auth.auth.signInWithPassword({email,password}):await auth.auth.signUp({email,password,options:{emailRedirectTo:window.location.origin}});if(result.error)throw result.error;if(accountMode==='signup'&&!result.data.session)setNotice({text:'Tasdiqlash havolasi emailingizga yuborildi. Emailni tasdiqlab, hisobga kiring.',error:false});else{await refresh();setView('studio');}setPassword('');});
   const duration=videoDuration(draft),boundaries=sceneBoundaries(draft),rendering=state.renders.filter(r=>['queued','rendering'].includes(r.status)).length;
-  const navItems:[View,typeof Clapperboard,string][]=[['studio',Clapperboard,'Video studiyo'],['projects',FolderOpen,'Loyihalarim'],['exports',ArrowDownToLine,'Eksportlar']];
-  return <div className="app-shell">
+  const navItems:[View,typeof Clapperboard,string][]=[
+    ['hero',Sparkles,'Oddity Kirish'],
+    ['studio',Clapperboard,'Video studiyo'],
+    ['projects',FolderOpen,'Loyihalarim'],
+    ['exports',ArrowDownToLine,'Eksportlar']
+  ];
+  return <div className="app-shell iso-grid-bg">
+    <LiquidLens active={lensActive} onToggle={setLensActive}/>
     {confirmation&&<Confirmation message={confirmation.message} onResolve={value=>{confirmation.resolve(value);setConfirmation(null);}}/>}
     {mobileNav&&<button className="nav-scrim" aria-label="Menyuni yopish" tabIndex={-1} onClick={()=>setMobileNav(false)}/>}
     <aside id="workspace-navigation" ref={menuPanel} className={`sidebar ${mobileNav?'mobile-open':''}`}>
       <button className="nav-close icon-button" aria-label="Navigatsiyani yopish" onClick={()=>setMobileNav(false)}><X size={19}/></button>
-      <a className="brand" href="/" aria-label="AdClone Studio bosh sahifa"><span className="brand-mark"><Layers size={25} strokeWidth={2.3}/></span><span>adclone<span className="brand-sub">STUDIO</span></span></a>
+      <a className="brand" href="/" aria-label="AdClone Studio bosh sahifa" onClick={e=>{e.preventDefault();navigate('hero');}}>
+        <span className="brand-mark logo-sheen" style={{padding:2,background:'transparent',rotate:'0deg',width:42,height:42,display:'flex',alignItems:'center',justifyContent:'center'}}>
+          <img src="/brand/logo-glass.png" alt="AdClone" style={{width:'100%',height:'100%',objectFit:'contain'}} />
+        </span>
+        <span>adclone<span className="brand-sub">STUDIO</span></span>
+      </a>
       <button className="new-project" onClick={()=>reset()}><Plus size={18}/> Yangi loyiha</button>
       <div className="nav-section">ISH MAYDONI</div>
       <nav aria-label="Asosiy navigatsiya">{navItems.map(([key,Icon,label])=><button key={key} className={`nav-item ${view===key?'active':''}`} onClick={()=>navigate(key)}><Icon size={19}/><span>{label}</span>{key==='projects'&&state.projects.length>0&&<b>{state.projects.length}</b>}{key==='exports'&&rendering>0&&<b>{rendering}</b>}</button>)}</nav>
@@ -61,9 +96,31 @@ export function Studio(){
       </div>
     </aside>
     <div className="workspace">
-      <header className="topbar"><div className="breadcrumbs"><button ref={menuToggle} className="mobile-menu icon-button" aria-label="Menyuni ochish" aria-expanded={mobileNav} aria-controls="workspace-navigation" onClick={()=>setMobileNav(!mobileNav)}><Menu size={20}/></button><span>Ish maydoni</span><ChevronRight size={14}/><strong>{{studio:'Video studiyo',projects:'Loyihalarim',exports:'Eksportlar',settings:'Sozlamalar',account:'Hisob'}[view]}</strong></div><div className="topbar-actions"><span className="workspace-status"><i/>{state.authConfigured?'SaaS beta':'Mahalliy demo'}</span><button className="help-link" onClick={()=>navigate('settings')}>Qo‘llanma <ArrowUpRight size={14}/></button></div></header>
+      <header className="topbar">
+        <div className="breadcrumbs">
+          <button ref={menuToggle} className="mobile-menu icon-button" aria-label="Menyuni ochish" aria-expanded={mobileNav} aria-controls="workspace-navigation" onClick={()=>setMobileNav(!mobileNav)}><Menu size={20}/></button>
+          <span>Ish maydoni</span>
+          <ChevronRight size={14}/>
+          <strong>{{hero:'Oddity Kirish',studio:'Video studiyo',projects:'Loyihalarim',exports:'Eksportlar',settings:'Sozlamalar',account:'Hisob'}[view]}</strong>
+        </div>
+        <div className="topbar-actions">
+          <button
+            type="button"
+            onClick={()=>setLensActive(!lensActive)}
+            className={`lens-toggle-btn ${lensActive?'active':'inactive'}`}
+            style={{cursor:'pointer'}}
+            title="Interaktiv suyuq shisha linzani yoqish/o‘chirish"
+          >
+            <span className="h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee]"/>
+            <span className="font-mono text-[10px] font-bold">lens {lensActive?'[on]':'[off]'}</span>
+          </button>
+          <span className="workspace-status"><i/>{state.authConfigured?'SaaS beta':'Mahalliy demo'}</span>
+          <button className="help-link" onClick={()=>navigate('settings')}>Qo‘llanma <ArrowUpRight size={14}/></button>
+        </div>
+      </header>
       <main>
         {notice&&<div className={`notice ${notice.error?'error':'success'}`} role={notice.error?'alert':'status'}><span>{notice.text}</span><button aria-label="Xabarni yopish" onClick={()=>setNotice(null)}><X size={16}/></button></div>}
+        {view==='hero'&&<OddityHero lensActive={lensActive} onToggleLens={()=>setLensActive(!lensActive)} onOpenStudio={()=>navigate('studio')} onSelectPreset={handleSelectPreset}/>}
         {view==='studio'&&<>
           <div className="page-heading"><div><h1>Mahsulotingiz. Yangi hikoya.</h1><p>Bir havoladan keyingi reklamangizgacha — hammasi shu yerda.</p></div><span className="format-label"><Clapperboard size={15}/> Reels · TikTok · Shorts</span></div>
           <section className="import-bar" aria-label="Mahsulot importi"><div className="import-input"><Link2 size={20}/><input aria-label="Mahsulot havolasi" value={url} onChange={e=>setUrl(e.target.value)} onKeyDown={e=>{if(e.key==='Enter'&&!busy)void importLink();}} placeholder="Mahsulot havolasini shu yerga joylang…" type="url"/><button className="primary" disabled={!!busy} onClick={()=>void importLink()}>{busy==='import'?<LoaderCircle className="spin" size={17}/>:<Sparkles size={17}/>}Mahsulotni olish <ArrowRight size={16}/></button></div><div className="import-caption"><span>Uzum <i/> Wildberries <i/> Amazon <i/> Shopify</span><button onClick={()=>{setTab('product');document.getElementById('editor')?.scrollIntoView({behavior:'smooth',block:'start'});}}>yoki qo‘lda kiriting <ArrowUpRight size={13}/></button></div></section>
