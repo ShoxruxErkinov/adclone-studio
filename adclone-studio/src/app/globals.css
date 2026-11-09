@@ -257,6 +257,47 @@ select {
 .nav-item.active svg {
   color: #22d3ee;
 }
+.nav-icon-badge {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  transition: all 0.2s ease;
+}
+.nav-item:hover .nav-icon-badge {
+  background: rgba(34, 211, 238, 0.12);
+  border-color: rgba(34, 211, 238, 0.28);
+  color: #22d3ee;
+}
+.nav-item.active .nav-icon-badge {
+  background: rgba(34, 211, 238, 0.25);
+  border-color: rgba(34, 211, 238, 0.5);
+  color: #22d3ee;
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.35);
+}
+
+.tab-icon-badge {
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.2s ease;
+}
+.editor-tabs button.selected .tab-icon-badge {
+  background: rgba(34, 211, 238, 0.2);
+  border-color: rgba(34, 211, 238, 0.45);
+  color: #22d3ee;
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
+}
 .nav-item b {
   font-size: 10px;
   margin-left: auto;

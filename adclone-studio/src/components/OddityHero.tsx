@@ -2,17 +2,17 @@
 import { useState } from 'react';
 import {
   ArrowRight,
-  AudioLines,
-  Bolt,
-  CheckCircle2,
-  Layers,
-  Link2,
+  ArrowsClockwise,
+  CheckCircle,
+  Lightning,
+  LinkSimple,
   Play,
-  RotateCw,
-  Sparkles,
-  TrendingUp,
-  Volume2,
-} from 'lucide-react';
+  SpeakerHigh,
+  Sparkle,
+  Stack,
+  TrendUp,
+  Waveform,
+} from '@phosphor-icons/react';
 
 interface OddityHeroProps {
   onSelectPreset: (url: string) => void;
@@ -95,7 +95,7 @@ export function OddityHero({
           <div className="oddity-left-column">
             {/* Tagline */}
             <div className="oddity-tagline">
-              <Sparkles size={15} />
+              <Sparkle size={16} weight="duotone" />
               <span>SYNTHETIC COMMERCE ACCELERATOR</span>
             </div>
 
@@ -115,7 +115,7 @@ export function OddityHero({
             <div className="url-console-box glass">
               <div className="url-console-top-row">
                 <div className="oddity-url-input-wrap">
-                  <Link2 size={18} className="url-input-icon" />
+                  <LinkSimple size={18} weight="bold" className="url-input-icon" />
                   <input
                     type="url"
                     value={urlInput}
@@ -137,17 +137,17 @@ export function OddityHero({
                 >
                   {generating ? (
                     <>
-                      <RotateCw className="spin" size={16} />
+                      <ArrowsClockwise className="spin" size={16} weight="bold" />
                       <span>Ajratilmoqda...</span>
                     </>
                   ) : success ? (
                     <>
-                      <CheckCircle2 size={16} />
+                      <CheckCircle size={16} weight="fill" />
                       <span>Tayyor!</span>
                     </>
                   ) : (
                     <>
-                      <Bolt size={17} />
+                      <Lightning size={17} weight="fill" />
                       <span>20 Video Ad Yaratish</span>
                     </>
                   )}
@@ -196,7 +196,7 @@ export function OddityHero({
               <div className="metric-card glass">
                 <div className="metric-val-flex">
                   <span className="metric-val text-cyan">4.8x</span>
-                  <TrendingUp size={16} className="text-cyan" />
+                  <TrendUp size={16} weight="bold" className="text-cyan" />
                 </div>
                 <span className="metric-lbl">Avg ROAS Lift</span>
               </div>
@@ -214,7 +214,7 @@ export function OddityHero({
                 className="open-studio-action-btn"
               >
                 <span>To'g'ridan-to'g'ri Studiyo Muharririni Ochish</span>
-                <ArrowRight size={16} />
+                <ArrowRight size={16} weight="bold" />
               </button>
             </div>
           </div>
@@ -231,7 +231,7 @@ export function OddityHero({
                 <div className="specimen-inner-box">
                   <div className="specimen-audio-title">
                     <span>HOOK_MAGNET_V1.wav</span>
-                    <Volume2 size={13} />
+                    <SpeakerHigh size={14} weight="duotone" />
                   </div>
                   {/* Simulated Audio Waveform Bars */}
                   <div className="waveform-track">
@@ -289,7 +289,7 @@ export function OddityHero({
                   <span className="specimen-tag purple">NEURAL SYNTH</span>
                 </div>
                 <div className="specimen-inner-box voice-box">
-                  <AudioLines size={32} className="voice-icon" />
+                  <Waveform size={32} weight="duotone" className="voice-icon" />
                   <div className="voice-meta">
                     <span>ElevenLabs</span>
                     <span>48kHz / 24-bit</span>
@@ -310,7 +310,7 @@ export function OddityHero({
                 <div className="specimen-inner-box reel-box">
                   <div className="reel-stat-row">
                     <span className="reel-views">
-                      <Play size={10} fill="currentColor" /> 3.8M
+                      <Play size={10} weight="fill" /> 3.8M
                     </span>
                     <span className="reel-format">9:16 REEL</span>
                   </div>
@@ -368,7 +368,7 @@ export function OddityHero({
         <div className="oddity-bottom-banner glass">
           <div className="banner-left">
             <div className="banner-icon-box">
-              <Layers size={24} />
+              <Stack size={24} weight="duotone" />
             </div>
             <div>
               <h2 className="banner-title">AdClone Liquid Generation Engine v4.8</h2>
@@ -388,7 +388,7 @@ export function OddityHero({
               className="primary-cta-button"
             >
               <span>Studiyoga Kirish</span>
-              <ArrowRight size={15} />
+              <ArrowRight size={15} weight="bold" />
             </button>
           </div>
         </div>
