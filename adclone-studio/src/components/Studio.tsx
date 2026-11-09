@@ -5,7 +5,6 @@ import {ArrowDownToLine,ArrowLeft,ArrowRight,ArrowUpRight,AudioLines,Check,Check
 import {AdComposition} from '@/video/AdComposition';
 import {api,authHeaders,browserAuth} from '@/lib/browser';
 import {createDraft,demoProduct,presetProducts,languages,roleLabels,sceneBoundaries,scriptText,videoDuration,type AppState,type Language,type Project,type ProjectInput} from '@/lib/model';
-import {LiquidLens} from '@/components/LiquidLens';
 import {OddityHero} from '@/components/OddityHero';
 
 type View='hero'|'studio'|'projects'|'exports'|'settings'|'account';
@@ -18,7 +17,7 @@ function Confirmation({message,onResolve}:{message:string;onResolve:(value:boole
 const seconds=(n:number)=>`0:${Math.floor(n).toString().padStart(2,'0')}`;
 
 export function Studio(){
-  const [view,setView]=useState<View>('hero'),[tab,setTab]=useState<Tab>('script');
+  const [view,setView]=useState<View>('studio'),[tab,setTab]=useState<Tab>('script');
   const [lensActive,setLensActive]=useState(true);
   const [draft,setDraft]=useState<ProjectInput>(()=>createDraft()),[projectId,setProjectId]=useState<string>(),[dirty,setDirty]=useState(false);
   const [state,setState]=useState<AppState>(initial),[url,setUrl]=useState(''),[busy,setBusy]=useState(''),[notice,setNotice]=useState<{text:string;error:boolean}|null>(null);
@@ -75,7 +74,6 @@ export function Studio(){
     ['exports',ArrowDownToLine,'Eksportlar']
   ];
   return <div className="app-shell iso-grid-bg">
-    <LiquidLens active={lensActive} onToggle={setLensActive}/>
     {confirmation&&<Confirmation message={confirmation.message} onResolve={value=>{confirmation.resolve(value);setConfirmation(null);}}/>}
     {mobileNav&&<button className="nav-scrim" aria-label="Menyuni yopish" tabIndex={-1} onClick={()=>setMobileNav(false)}/>}
     <aside id="workspace-navigation" ref={menuPanel} className={`sidebar ${mobileNav?'mobile-open':''}`}>
@@ -104,16 +102,6 @@ export function Studio(){
           <strong>{{hero:'Oddity Kirish',studio:'Video studiyo',projects:'Loyihalarim',exports:'Eksportlar',settings:'Sozlamalar',account:'Hisob'}[view]}</strong>
         </div>
         <div className="topbar-actions">
-          <button
-            type="button"
-            onClick={()=>setLensActive(!lensActive)}
-            className={`lens-toggle-btn ${lensActive?'active':'inactive'}`}
-            style={{cursor:'pointer'}}
-            title="Interaktiv suyuq shisha linzani yoqish/o‘chirish"
-          >
-            <span className="h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee]"/>
-            <span className="font-mono text-[10px] font-bold">lens {lensActive?'[on]':'[off]'}</span>
-          </button>
           <span className="workspace-status"><i/>{state.authConfigured?'SaaS beta':'Mahalliy demo'}</span>
           <button className="help-link" onClick={()=>navigate('settings')}>Qo‘llanma <ArrowUpRight size={14}/></button>
         </div>
