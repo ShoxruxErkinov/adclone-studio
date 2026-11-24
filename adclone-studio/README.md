@@ -6,7 +6,7 @@ O‘zbekcha URL → ssenariy → jonli video muharriri → haqiqiy MP4 MVP. Next
 
 ## Tez ishga tushirish
 
-Node.js **24 LTS** tavsiya qilinadi (22.13+ kerak).
+Node.js **24 LTS** tavsiya qilinadi. Node.js 22 ishlatsangiz, `package-lock.json` dagi `undici` paketi uchun kamida **22.19.0** kerak.
 
 ```bash
 cd adclone-studio
