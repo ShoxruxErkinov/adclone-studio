@@ -1,352 +1,112 @@
-<div align="center">
-
-<img src="adclone-studio/public/brand/logo-mark-clean.png" alt="AdClone Studio logotipi" width="96" />
-
 # AdClone Studio
 
-**Mahsulot havolasidan tayyor reklama videosigacha.**
+<img align="right" width="72" src="adclone-studio/public/brand/logo-mark-clean.png" alt="AdClone Studio logotipi" />
 
-Mahsulotni import qiling, ssenariy yozing yoki yarating, videoni jonli muharrirda sozlang va vertikal MP4 sifatida eksport qiling.
+AdClone Studio onlayn sotuvchiga mahsulot rasmi, narxi va xususiyatlaridan vertikal reklama videosi tayyorlashga yordam beradi. Mahsulotni havoladan oling yoki qo‘lda kiriting, to‘rtta sahna matnini tahrirlang va natijani MP4 fayl qilib yuklab oling. Muharrir o‘zbekcha, video ssenariysini esa besh tilda tayyorlash mumkin.
 
-**O‘zbekcha interfeys · 5 til · Next.js + Remotion · Mahalliy MVP**
+**Mahalliy demo API kalitlarisiz ishlaydi.** Quyidagi suratda namuna sifatida berilgan *Studio Wireless* quloqchinining ssenariysi va 9:16 formatdagi jonli prevyusi ko‘rsatilgan.
 
-[Tez boshlash](#tez-boshlash) · [Imkoniyatlar](#imkoniyatlar-va-holat) · [Foydalanish](#qanday-foydalaniladi) · [Deploy](#production-deploy) · [Texnik hujjat](adclone-studio/README.md)
+![Ssenariy muharririda to‘rtta sahna, o‘ng tomonda Studio Wireless quloqchinining vertikal prevyusi](docs/media/studio-editor.webp)
 
-</div>
-
----
-
-![AdClone Studio generator preview](adclone-studio/public/brand/studio-generator-preview.png)
-
-> **Loyiha holati:** bu repository — lokal ishlatish va sinash uchun tayyor **MVP**. Vercel + Supabase va alohida render worker uchun kod/migratsiyalar mavjud, ammo ularni haqiqiy hisoblar bilan sozlash va staging’da tekshirish kerak. Bu README loyihani ommaviy production servis yoki pullik SaaS sifatida ishga tushgan deb da’vo qilmaydi.
-
-## Loyiha haqida
-
-**AdClone Studio** — onlayn sotuvchilar, kontent yaratuvchilar va kichik bizneslar uchun mahsulot asosidagi qisqa reklama videosini tayyorlash studiyasi. Odatdagi ish jarayoni:
-
-**Mahsulot URL / rasm → Mahsulot ma’lumotlari → 4 qismli ssenariy → Video muharriri → MP4 eksport.**
-
-Loyiha ayniqsa o‘zbek tilida ishlaydigan foydalanuvchilar uchun ishlab chiqilgan. Demo muharriri va oddiy ssenariy shablonlari **AI API kalitlarisiz** ishlaydi. Qo‘shimcha provayderlar ulansa, AI ssenariy, sintez qilingan ovoz, sahifa scraping va rasm fonini olib tashlash funksiyalaridan foydalanish mumkin.
-
-## Imkoniyatlar va holat
-
-| Funksiya | Holat | Izoh |
-| --- | --- | --- |
-| Namuna mahsulot bilan demo | ✅ Mavjud | Tashqi API kalitisiz lokal sinov |
-| Mahsulot rasmi va ma’lumotlarini kiritish | ✅ Mavjud | Nom, narx, tavsif, xususiyatlar |
-| HTTPS mahsulot URL importi | ✅ Cheklovlar bilan | JSON-LD/OpenGraph; ayrim marketplace sahifalari bloklashi mumkin |
-| 4 sahnali ssenariy | ✅ Mavjud | Diqqatni tortish → Muammo → Yechim → CTA |
-| O‘zbek, rus, ingliz, qozoq, turk tillari | ✅ Mavjud | Shablon va muharrirda tanlanadi |
-| Jonli video preview | ✅ Mavjud | Remotion Player |
-| Uslub, subtitr, rang va musiqa | ✅ Mavjud | 3 uslub va mahalliy instrumental audio |
-| 15/30 soniyalik video | ✅ Mavjud | Ovoz uzun bo‘lsa natija davomiyligi uzayishi mumkin |
-| MP4 eksport | ✅ Lokal MVP | H.264, 1080 × 1920, 30 fps; ovoz bo‘lsa audio ham qo‘shiladi |
-| Loyihalar va eksport tarixi | ✅ Lokal MVP | SQLite va mahalliy fayllar |
-| Gemini AI ssenariysi | 🔑 Integratsiya mavjud | API kaliti va real hisobda sinov kerak |
-| ElevenLabs ovozi va so‘z vaqt belgilari | 🔑 Integratsiya mavjud | API kaliti, voice ID va mos model kerak |
-| Firecrawl orqali murakkab sahifa importi | 🔑 Integratsiya mavjud | API kaliti kerak |
-| remove.bg bilan fonni olib tashlash | 🔑 Integratsiya mavjud | API kaliti kerak |
-| Supabase Auth, PostgreSQL, private Storage | 🛠️ Kod tayyor | Cloud hisoblari, migratsiya va end-to-end sinov kerak |
-| Alohida Docker render worker | 🛠️ Konfiguratsiya mavjud | Server/container’da ishga tushirilishi kerak |
-| AI avatar / product-in-hand UGC | 🗓️ Rejada | Hozir ishlaydigan funksiya sifatida ko‘rsatilmaydi |
-| Haqiqiy to‘lov va obuna | 🗓️ Rejada | Stripe/Payme/Click integratsiyasi yo‘q |
-
-**Muhim:** demo’dagi mahsulot, tavsif va narxlar — haqiqiy savdo taklifi emas. Import qilingan sahifalarning to‘liq yoki xatosiz o‘qilishi kafolatlanmaydi.
-
-## Texnologiyalar
-
-| Qatlam | Texnologiya |
-| --- | --- |
-| Web ilova | Next.js 16 (App Router), React 19, TypeScript |
-| Video preview / render | Remotion 4, Chromium, FFmpeg |
-| Interfeys | CSS, Manrope, Lucide / Phosphor Icons |
-| Validatsiya | Zod |
-| HTML parsing | Cheerio |
-| Lokal saqlash | Node.js SQLite, `.data/` katalogi |
-| Production backend | Supabase Auth, PostgreSQL, RLS, Storage |
-| Production hosting | Vercel + alohida Node/Docker worker |
-| Ixtiyoriy AI xizmatlari | Gemini, ElevenLabs, Firecrawl, remove.bg |
+[Tez boshlash](#tez-boshlash) · [Birinchi videoni yaratish](#qanday-foydalaniladi) · [Imkoniyatlar](#imkoniyatlar-va-holat) · [Arxitektura](#arxitektura) · [Deploy](#production-deploy)
 
 ## Tez boshlash
 
-### Talablar
+Git, npm va **Node.js 24 LTS** o‘rnating. Node.js 22 ishlatsangiz, **22.19.0** yoki yangirog‘ini tanlang. Ilovaning `package.json` faylida 22.13.0 ko‘rsatilgan, lekin qulflangan `undici` paketi kamida 22.19.0 talab qiladi. [Paket versiyalari](adclone-studio/package-lock.json)
 
-- **Node.js 24 LTS** tavsiya etiladi; `package.json` bo‘yicha kamida **22.13.0** kerak.
-- **npm** (loyihada `package-lock.json` bor; takrorlanadigan o‘rnatish uchun `npm ci` ishlating).
-- **Google Chrome, Microsoft Edge yoki Chromium** — MP4 render uchun. Ayrim tizimlarda Remotion brauzerni o‘zi yuklashi mumkin.
-- Git va lokal video eksport uchun yetarli disk xotirasi.
-
-### 1. Repository’ni klonlash
-
-~~~bash
+```sh
 git clone https://github.com/ShoxruxErkinov/adclone-studio.git
 cd adclone-studio/adclone-studio
-~~~
-
-> **Eslatma:** kod repository ichidagi ikkinchi `adclone-studio/` katalogida joylashgan. GitHub repository xususiy bo‘lsa, klonlash uchun ruxsatingiz bo‘lishi kerak.
-
-### 2. Paketlarni o‘rnatish
-
-~~~bash
 npm ci
-~~~
-
-### 3. Muhit faylini tayyorlash
-
-**macOS / Linux:**
-
-~~~bash
-cp .env.example .env.local
-~~~
-
-**Windows PowerShell:**
-
-~~~powershell
-Copy-Item .env.example .env.local
-~~~
-
-Lokal demo uchun API kalitlari kiritilishi **shart emas**. `.env.local` faylidagi `APP_URL=http://127.0.0.1:3000` qiymatini qoldirishingiz mumkin.
-
-### 4. Ilovani ishga tushirish
-
-~~~bash
 npm run dev
-~~~
+```
 
-Brauzerda oching:
+Brauzerda [mahalliy studiyani oching](http://127.0.0.1:3000). `npm run dev` veb-serverni va MP4 tayyorlaydigan render worker’ni birga ishga tushiradi. Prevyu ostida **Render worker tayyor.** yozuvi ko‘ringach, eksportni sinab ko‘rishingiz mumkin. Terminalni ochiq qoldiring.
 
-**http://127.0.0.1:3000**
-
-`npm run dev` bir vaqtning o‘zida Next.js web serverini **va** lokal render worker’ni ishga tushiradi. Terminalni yopmang. To‘xtatish uchun `Ctrl+C` bosing.
-
-### 5. Birinchi videoni sinab ko‘rish
-
-1. Namuna mahsulotni tanlang yoki o‘zingizning rasmingiz va mahsulot ma’lumotlarini kiriting.
-2. Til va **15 yoki 30 soniya** davomiylikni tanlang.
-3. Ssenariyning **Hook / Muammo / Yechim / CTA** qismlarini tahrirlang.
-4. Uslub, subtitr, urg‘u rangini va musiqani sozlang.
-5. Preview’ni ko‘rib, loyihani saqlang va **MP4 eksport** qiling.
-6. Eksport holatini kuzating va tayyor faylni yuklab oling.
-
-Mahalliy baza dastlab **10 ta test krediti** bilan yaratiladi. Ular haqiqiy pul yoki sotib olingan kredit emas.
+Kalitsiz demo uchun `.env.local` ixtiyoriy. Maxsus brauzer yo‘li yoki tashqi xizmat kalitlari kerak bo‘lsa, ilova papkasida `cp .env.example .env.local` buyrug‘ini bajaring (PowerShell’da `Copy-Item .env.example .env.local`). Qiymatlarni kiritgach, server va worker’ni qayta ishga tushiring. MP4 uchun worker Chrome, Edge yoki Chromium’dan foydalanadi. Brauzer topilmasa, `CHROME_EXECUTABLE` ga uning bajariladigan fayli yo‘lini yozing. [Muhit sozlamalari](adclone-studio/.env.example)
 
 ## Qanday foydalaniladi
 
-### Mahsulotni qo‘shish
+Quyidagi misolni mahsulot havolasi yoki tashqi xizmat hisobisiz takrorlash mumkin.
 
-Mahsulotni demo’dan olish, qo‘lda kiritish, rasm yuklash yoki HTTPS havoladan import qilish mumkin. URL importi sahifadagi Product JSON-LD va OpenGraph ma’lumotlarini qidiradi. Dinamik yoki himoyalangan marketplace sahifalariga kirishda cheklovlar uchrashi mumkin — bunday holatda mahsulotni qo‘lda to‘ldiring.
+1. **Mahsulot.** Studiyada *Studio Wireless* namuna mahsuloti tayyor turadi. O‘z mahsulotingiz uchun **Mahsulot** bo‘limida nom, narx, tavsif va xususiyatlarni kiriting. **Rasm yuklash** JPG, PNG va WebP fayllarini 3.5 MB gacha qabul qiladi. HTTPS havola bilan ishlasangiz, **Mahsulotni olish** tugmasini bosing va import qilingan ma’lumotlarni tekshiring.
+2. **Ssenariy.** Mahsulot ma’lumotlarini almashtirgach, **Ssenariy yaratish** tugmasini bosing. **Ssenariy** bo‘limida video tilini va 15 yoki 30 soniyani tanlang. Diqqatni tortish, muammo, yechim va harakatga chaqirish sahnalarining matnini tahrirlang.
+3. **Ko‘rinish va ovoz.** Namunadagi ko‘rinishni takrorlash uchun **Ko‘rinish → Tabiiy** uslubini tanlang. **Ovoz → Fon musiqasi** ni yoqing. Prevyu ostidagi **Yechim** tugmasi bilan shu sahnaga o‘ting. Musiqa va subtitr uchun AI ovozini ulash shart emas.
+4. **Saqlash va eksport.** **Saqlash** loyihani keyin **Loyihalarim** bo‘limidan ochish imkonini beradi. **MP4 eksport qilish** tugmasini bosing. **Eksportlar** bo‘limida holat *Navbatda → Yig‘ilmoqda → Tayyor* tarzida o‘zgaradi. **Yuklab olish** tugmasi yakuniy videoni beradi.
 
-### Ssenariy va tillar
+Mahalliy demo 10 ta test krediti bilan boshlanadi. Har bir eksport 1 kredit sarflaydi, render xatosida kredit qaytariladi. Namuna mahsulotining narxi va tavsifi namoyish uchun kiritilgan.
 
-Muharrir to‘rtta izchil sahnadan foydalanadi:
+![Eksportlar sahifasida tayyor Studio Wireless videosi va Yuklab olish tugmasi](docs/media/studio-export.webp)
 
-| Bosqich | Vazifa |
+Namunadagi eksport 15 soniyalik vertikal video bo‘lib, o‘zbekcha subtitrlar va fon musiqasini o‘z ichiga oladi. [Studio Wireless · MP4, 1.9 MiB](docs/media/studio-wireless.mp4)
+
+## Imkoniyatlar va holat
+
+| Imkoniyat | Qanday ishlaydi |
 | --- | --- |
-| **Hook** | Tomoshabin e’tiborini tortish |
-| **Problem** | Xaridor ehtiyojiga e’tibor qaratish |
-| **Solution** | Mahsulotning berilgan faktlarga asoslangan afzalliklari |
-| **CTA** | Keyingi harakatga chaqirish |
-
-Tillar: **O‘zbekcha (uz), Русский (ru), English (en), Қазақша (kk), Türkçe (tr)**. Gemini sozlanmasa, shablon ssenariy ishlaydi; sozlansa AI ssenariy so‘ralishi mumkin. Faktlar, narxlar va da’volarni eksportdan oldin foydalanuvchi tekshirishi kerak.
-
-### Video va audio
-
-Preview va MP4 eksport **bitta `AdComposition`** komponentidan foydalanadi. Subtitr, ranglar, sahnalar, 3 ta vizual uslub va mahalliy instrumental audio mavjud. ElevenLabs ulansa ovoz generatsiyasi hamda so‘zlar bo‘yicha vaqt belgilari ishlatiladi; provider mosligi haqiqiy hisobda tekshirilishi zarur.
-
-## npm buyruqlari
-
-Barcha buyruqlar **ichki `adclone-studio/` katalogidan** ishga tushiriladi.
-
-| Buyruq | Vazifasi |
-| --- | --- |
-| `npm run dev` | Lokal web server + render worker |
-| `npm run dev:web` | Faqat Next.js development server |
-| `npm run worker` | Alohida render worker |
-| `npm run typecheck` | TypeScript xatolarini tekshirish |
-| `npm test` | Avtomatlashtirilgan testlarni ishga tushirish |
-| `npm run build` | Next.js production build |
-| `npm run start` | Lokal production-mode web server + worker |
-
-## Muhit o‘zgaruvchilari
-
-To‘liq namuna: [`adclone-studio/.env.example`](adclone-studio/.env.example).
-
-| O‘zgaruvchi | Kerak bo‘ladigan holat | Izoh |
-| --- | --- | --- |
-| `APP_URL` | Cloud deploy | Ilova HTTPS origin’i; lokalda `http://127.0.0.1:3000` |
-| `NEXT_PUBLIC_SUPABASE_URL` | Supabase rejimi | Supabase Project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase rejimi | Brauzer uchun public/anon kalit; RLS bilan ishlaydi |
-| `SUPABASE_SERVICE_ROLE_KEY` | **Faqat worker** | Maxfiy kalit; frontend va Vercel web env’iga qo‘ymang |
-| `GEMINI_API_KEY` | Ixtiyoriy | AI ssenariy |
-| `GEMINI_MODEL` | Ixtiyoriy | Namuna: `gemini-2.5-flash` |
-| `ELEVENLABS_API_KEY` | Ixtiyoriy | AI ovoz |
-| `ELEVENLABS_VOICE_ID` | Ixtiyoriy | Tanlangan ovoz |
-| `ELEVENLABS_MODEL_ID` | Ixtiyoriy | Maqsadli tilni qo‘llaydigan model |
-| `FIRECRAWL_API_KEY` | Ixtiyoriy | Sahifa scraping |
-| `REMOVE_BG_API_KEY` | Ixtiyoriy | Rasm fonini olib tashlash |
-| `CHROME_EXECUTABLE` | Zarur bo‘lishi mumkin | Chromium/Chrome/Edge executable yo‘li |
-| `RENDER_CONCURRENCY` | Ixtiyoriy | Render parallelizmi |
-| `PORT` | Ixtiyoriy | Lokal port; standart `3000` |
-| `ALLOW_LOCAL_DEMO` | Lokal smoke test uchun | **Production’da yoqmang** |
-
-**Xavfsizlik:** `.env.local` va boshqa maxfiy fayllarni Git’ga commit qilmang. `NEXT_PUBLIC_` prefiksi bor o‘zgaruvchilar brauzer kodiga chiqishi mumkin; maxfiy tokenlar uchun ishlatmang.
+| Mahsulot importi | HTTPS sahifadan Product JSON-LD yoki OpenGraph ma’lumotlarini o‘qiydi. Do‘kon avtomatik o‘qishni cheklasa, rasm va faktlarni qo‘lda kiritish mumkin. |
+| Ssenariy | O‘zbek, rus, ingliz, qozoq va turk tillarida to‘rt sahnali shablonlar bor. Gemini ulanganda mahsulot faktlaridan AI ssenariysi yaratish mumkin. |
+| Muharrir | Lavanda, Tabiiy va Tungi uslublari, dinamik subtitrlar, urg‘u rangi va fon musiqasi mavjud. Prevyu va eksport bitta Remotion kompozitsiyasidan foydalanadi. |
+| MP4 | Worker 1080 × 1920 o‘lchamda, 30 kadr/soniya tezlikda H.264 video tayyorlaydi. Boshlang‘ich davomiylik 15 yoki 30 soniya. Ovozli matn uzunroq bo‘lsa, video ham uzayadi. |
+| Loyihalar va fayllar | Mahalliy rejimda SQLite loyihalar, kreditlar va navbatni saqlaydi. Media va eksportlar ilova papkasidagi `.data/assets/` ichida turadi. |
+| Ixtiyoriy xizmatlar | ElevenLabs ovoz va subtitr uchun so‘z vaqtlarini beradi. Firecrawl dinamik sahifalarni import qilishga, remove.bg rasm fonini olib tashlashga yordam beradi. Har bir xizmat alohida kalit va jonli sinov talab qiladi. |
+| Rejada | Pullik obuna, to‘lov qabul qilish va mahsulotni qo‘lda ushlab ko‘rsatadigan AI avatarlar yo‘l xaritasiga kiritilgan. |
 
 ## Arxitektura
 
-~~~mermaid
+Next.js 16 va React 19 muharrirni ko‘rsatadi. Brauzerdagi Remotion Player va alohida Node.js worker bir xil Remotion 4 kompozitsiyasi — `AdComposition` — yordamida kadrlarni chizadi. Eksport tugmasi bosilganda API loyiha nusxasini navbatga qo‘yadi. Worker shu nusxadan MP4 yaratadi.
+
+```mermaid
 flowchart TD
-    A["Brauzer / Studio UI"] --> B["Next.js API"]
-    B --> C["Mahsulot importi / ssenariy / media"]
-    C --> D["Remotion Player — preview"]
-    B --> E{"Ishlash muhiti"}
-    E -->|Lokal demo| F["SQLite + .data/assets"]
-    E -->|Cloud| G["Supabase Auth / Postgres / Storage"]
-    F --> H["Lokal render worker"]
-    G --> I["Alohida Docker / Node worker"]
-    H --> J["Remotion + Chromium / FFmpeg"]
-    I --> J
-    J --> K["MP4 eksport"]
-~~~
+    Studio["Studio muharriri"] --> Player["Remotion Player"]
+    Studio --> API["Next.js API"]
+    API --> Local["Mahalliy navbat · SQLite"]
+    API --> Cloud["Bulutdagi navbat · Supabase"]
+    Local --> Worker["Render worker"]
+    Cloud --> Worker
+    Worker --> MP4["MP4 fayli"]
+```
 
-Lokal demo ma’lumotlari `adclone-studio/.data/` ichida saqlanadi: `studio.sqlite` loyihalar, navbat va test kreditlari uchun; `assets/` media va tayyor videolar uchun. Katalog Git’dan chiqarilgan. Bu lokal rejimni umumiy, ko‘p foydalanuvchili public servis sifatida ishlatmang.
-
-### Repository tuzilmasi
-
-~~~text
-adclone-studio/                  # GitHub repository ildizi
-├── README.md                    # Siz o‘qiyotgan hujjat
-└── adclone-studio/              # Asosiy Next.js ilova
-    ├── README.md                # Texnik/deploy yo‘riqnoma
-    ├── .env.example             # Muhit o‘zgaruvchilari namunasi
-    ├── package.json
-    ├── vercel.json
-    ├── Dockerfile.worker
-    ├── compose.worker.yml
-    ├── public/                  # Logo, demo foto, media, fontlar
-    ├── src/
-    │   ├── app/                # Sahifalar va API route'lar
-    │   ├── components/         # Studio interfeysi
-    │   ├── lib/                # Model, provider, saqlash, xavfsizlik
-    │   └── video/              # Remotion composition
-    ├── scripts/                 # Dev va render worker
-    ├── supabase/migrations/     # SQL migratsiyalar
-    └── tests/                   # Avtomatik tekshiruvlar
-~~~
-
-## Production deploy
-
-> Production’ga chiqish uchun Supabase loyihasi, domen/HTTPS, worker hosting, xavfsiz secret boshqaruvi va haqiqiy sinovlar talab etiladi. **Faqat Vercel’ga deploy qilish MP4 render tizimini to‘liq ishga tushirmaydi.**
-
-1. **Supabase**: loyiha yarating, `supabase/migrations/001_studio.sql` ni staging’da tekshirib qo‘llang; Auth URL/redirect, email confirmation, SMTP va RLS ni sozlang.
-2. **Vercel**: GitHub repository’ni import qiling. **Root Directory = `adclone-studio`**, Framework = Next.js, Node = **24.x**. Kerakli public env va server-side provider secret’larini kiriting.
-3. **Worker**: Node.js/Chromium ishlaydigan VPS, Render yoki Railway container’ida alohida render jarayonini ishga tushiring. Worker’da Supabase URL va **`SUPABASE_SERVICE_ROLE_KEY`** bo‘lishi kerak.
-4. **Tekshirish**: kamida ikki hisob bilan Auth, private fayllar, loyiha ajratilishi, kredit rezerv/refund va real MP4 eksportni staging’da tekshiring. Monitoring, backup va retention siyosatini qo‘shing.
-
-Docker worker misoli (ichki katalogda, mos `.env.local` bilan):
-
-~~~bash
-docker compose -f compose.worker.yml up --build -d
-~~~
-
-Worker loglari:
-
-~~~bash
-docker compose -f compose.worker.yml logs -f
-~~~
-
-Batafsil deploy, SQL/RLS, resurs cheklovlari va xavfsizlik modeli: **[Ilovaning texnik README’si](adclone-studio/README.md#vercel--supabase-deploy)**.
+| Repozitoriydagi manzil | Vazifasi |
+| --- | --- |
+| [Studio.tsx](adclone-studio/src/components/Studio.tsx) | Mahsulot shakli, ssenariy, jonli prevyu va eksport boshqaruvi |
+| [src/app/api/](adclone-studio/src/app/api/) | Mahsulot, loyiha, yuklangan fayl va eksport so‘rovlarini qabul qilish |
+| [model.ts](adclone-studio/src/lib/model.ts) · [providers.ts](adclone-studio/src/lib/providers.ts) | Namuna mahsuloti, tillar, shablonlar va tashqi xizmatlar |
+| [AdComposition.tsx](adclone-studio/src/video/AdComposition.tsx) · [worker.ts](adclone-studio/scripts/worker.ts) | Sahna, subtitr, audio va yakuniy render |
+| [db.ts](adclone-studio/src/lib/db.ts) · [Supabase migratsiyasi](adclone-studio/supabase/migrations/001_studio.sql) | Mahalliy SQLite bazasi va bulut rejimi uchun PostgreSQL sxemasi |
+| [Texnik qo‘llanma](adclone-studio/README.md) · [mahsulot tavsifi](adclone-studio/PRODUCT.md) · [dizayn](adclone-studio/DESIGN.md) | Ishga tushirish, mahsulot maqsadi va interfeys qarorlari |
+| [Biznes-reja](<AdClone_Studio_Biznes_Reja(1).docx>) | Auditoriya, tijorat paketlari va moliyaviy prognozlar uchun rejalashtirish hujjati |
 
 ## Test va sifat nazorati
 
-~~~bash
-cd adclone-studio
+Buyruqlarni `package.json` joylashgan ichki `adclone-studio/` papkasida bajaring.
+
+```sh
 npm run typecheck
 npm test
 npm run build
-~~~
+```
 
-> Buyruqlarni repository ildizidan bajarayotgan bo‘lsangiz, yuqoridagi `cd adclone-studio` kerak. Agar allaqachon ichki katalogda bo‘lsangiz, uni takrorlamang.
+Testlar import, rasm formati, besh tildagi ssenariylar, subtitr vaqtlari, kreditni qaytarish hamda Supabase migratsiyasidagi foydalanuvchi huquqlarini tekshiradi. [Test fayllari](adclone-studio/tests/)
 
-Testlarda mahsulot sahifalarini parsing qilish, zararli URL/SSRF chegaralari, sxema validatsiyasi, subtitr/til vaqtlari, lokal kredit tranzaksiyalari va Supabase migratsiyasining ayrim xavfsizlik jihatlari qamrab olingan. **Lokal testdan o‘tish — real Auth, SMTP, Storage yoki pullik AI provayderlar cloud muhitida sinovdan o‘tganini anglatmaydi.**
+## Production deploy
+
+Bulut uchun repozitoriyda Vercel, Supabase va alohida render worker konfiguratsiyasi bor. Vercel’da **Root Directory** qiymati `adclone-studio` bo‘ladi. Supabase Auth, PostgreSQL va private Storage uchun migratsiyani qo‘llang. Worker’ni Chromium ishlata oladigan doimiy serverda ishga tushiring. `SUPABASE_SERVICE_ROLE_KEY` faqat worker muhitida saqlanadi.
+
+Ommaviy namoyishdan oldin staging’da ikki hisob bilan kirish, fayllarga ruxsat va MP4 yuklab olishni sinab ko‘ring. Docker buyrug‘i, muhit o‘zgaruvchilari va tekshiruv tartibi [deploy qo‘llanmasida](adclone-studio/README.md#vercel--supabase-deploy) berilgan.
 
 ## Muammolar va yechimlar
 
-<details>
-<summary><strong>`npm ci` yoki `npm run dev` ishlamayapti</strong></summary>
+| Alomat | Nima qilish kerak |
+| --- | --- |
+| npm `package.json` faylini topa olmayapti | Repozitoriy ildizidan `cd adclone-studio` ni bajaring. `node -v` bilan Node.js versiyasini tekshiring. |
+| Prevyu ishlaydi, eksport boshlanmayapti | **Sozlamalar → Render worker** holatini tekshiring. Server `npm run dev:web` bilan ishga tushirilgan bo‘lsa, ikkinchi terminalda ilova papkasidan `npm run worker` ni bajaring. |
+| Render xato bilan tugadi | Worker terminalidagi xabarni tekshiring. Brauzer topilmagan bo‘lsa, `CHROME_EXECUTABLE` ni sozlang va worker’ni qayta ishga tushiring. |
+| Import natijasi bo‘sh yoki noto‘liq | **Qo‘lda kiriting** orqali rasm va mahsulot faktlarini to‘ldiring. |
+| Mahalliy sinovni yangi baza bilan boshlash kerak | Server va worker’ni to‘xtating. Ilova papkasidagi `.data/` ni zaxira nomiga ko‘chiring. Keyingi ishga tushishda yangi baza yaratiladi, avvalgi fayllar zaxirada qoladi. |
 
-Node va npm versiyasini `node -v` / `npm -v` bilan tekshiring; Node 24 LTS tavsiya etiladi. Buyruqlarni `package.json` mavjud bo‘lgan ichki `adclone-studio/` katalogidan ishga tushiring. Windows’da npm PATH muammosi bo‘lsa, o‘rnatilgan `npm.cmd` manzilidan foydalaning.
+## Hissa qo‘shish va litsenziya
 
-</details>
+Kod o‘zgarishlarini alohida tarmoqda tayyorlab, yuqoridagi uchta tekshiruvni bajaring va pull request oching. Maxfiy kalitlarni `.env.local` da saqlang. Namuna media manbalari texnik qo‘llanmada keltirilgan. Repozitoriyda loyiha kodi uchun alohida `LICENSE` fayli yo‘q. [Media manbalari](adclone-studio/README.md#assets) · [Remotion litsenziyasi](https://www.remotion.dev/license)
 
-<details>
-<summary><strong>Render worker ulanmagan / eksport boshlanmayapti</strong></summary>
-
-`npm run dev` ikkala jarayonni ochganini tekshiring. `npm run dev:web` faqat web serverni ishga tushiradi — bunday holatda alohida `npm run worker` kerak. Production’da Vercel’dan tashqarida worker ishlashi va Supabase bilan ulanishi shart.
-
-</details>
-
-<details>
-<summary><strong>Chromium yoki MP4 render xatosi</strong></summary>
-
-Chrome/Edge/Chromium o‘rnatilganini tekshiring. Zarur bo‘lsa, `CHROME_EXECUTABLE` qiymatini executable’ning to‘liq yo‘liga belgilang; serverdagi xotira va disk bo‘shligini tekshiring.
-
-</details>
-
-<details>
-<summary><strong>Uzum, Wildberries yoki boshqa URL import bo‘lmayapti</strong></summary>
-
-Sahifa scraping’ni cheklashi, JavaScript bilan to‘ldirilishi yoki Product JSON-LD/OpenGraph ma’lumotini bermasligi mumkin. Mahsulot rasmi va ma’lumotlarini qo‘lda kiriting. Firecrawl integratsiyasi yordam berishi mumkin, ammo natija kafolatlanmaydi.
-
-</details>
-
-<details>
-<summary><strong>AI ssenariy, AI ovoz yoki fonni o‘chirish ishlamayapti</strong></summary>
-
-Kerakli provider kaliti va hisob imkoniyatlarini tekshiring. ElevenLabs uchun API kalitidan tashqari voice ID hamda tilni qo‘llaydigan model kerak. Kalitsiz rejimda oddiy ssenariy shablonidan foydalaning.
-
-</details>
-
-<details>
-<summary><strong>Lokal test ma’lumotlarini noldan boshlash kerak</strong></summary>
-
-Web server va worker’ni to‘xtating. Muhim fayllarni zaxiralagandan **keyin** ichki `adclone-studio/.data/` katalogini o‘chirish lokal loyihalar, eksportlar, media va test kreditlar tarixini ham butunlay o‘chiradi. Keyingi ishga tushishda yangi lokal SQLite baza yaratiladi. Bu production ma’lumotlariga taalluqli emas.
-
-</details>
-
-## Xavfsizlik va cheklovlar
-
-- URL importi tashqi manzillarga murojaat qiladi: ilovada HTTPS, ichki IP/SSRF, redirect, hajm va timeout tekshiruvlari mavjud; production’da doimiy xavfsizlik auditi ham zarur.
-- Supabase rejimida foydalanuvchi ma’lumotlarini ajratish uchun RLS va private Storage ko‘zda tutilgan; sozlamalar va haqiqiy huquqlar staging’da tasdiqlanishi kerak.
-- `SUPABASE_SERVICE_ROLE_KEY` hech qachon browser, public environment yoki repository tarixiga chiqarilmasligi kerak.
-- Demo krediti real to‘lov tizimi emas. Pullik provider kalitlari bilan ishlaganda xarajatlar sizning provider hisoblaringizga bog‘liq.
-- Uchinchi tomon saytlari, media, ovozlar va mahsulot kontentidan foydalanish huquqlarini tekshiring.
-- Remotion’dan tijoriy foydalanishda [rasmiy litsenziya shartlarini](https://www.remotion.dev/license) alohida tekshiring.
-
-## Yo‘l xaritasi
-
-Quyidagilar **rejalashtirilgan**, hozir tayyor funksiya deb hisoblanmaydi:
-
-- [ ] Haqiqiy cloud deploy va end-to-end staging testlari
-- [ ] Provider’lar bilan jonli sifat, tezlik va xarajat sinovlari
-- [ ] Rozilik asosidagi AI avatar / product-in-hand UGC
-- [ ] Stripe, Payme yoki Click orqali haqiqiy billing va webhook’lar
-- [ ] Production monitoring, backup, retention, rate-limit va support jarayonlari
-- [ ] E2E browser testlarni CI’da avtomatlashtirish
-
-## Hissa qo‘shish va aloqa
-
-Repo’ga kirish ruxsati borlar xatolarni GitHub Issues orqali bildirishlari va o‘zgarishlarni alohida branch + pull request shaklida taklif qilishlari mumkin. Kod o‘zgartirishdan oldin `npm run typecheck`, `npm test` va `npm run build` ni bajaring.
-
-**Muallif / repository:** [ShoxruxErkinov](https://github.com/ShoxruxErkinov) · [adclone-studio](https://github.com/ShoxruxErkinov/adclone-studio)
-
-**Texnik tafsilotlar:** [adclone-studio/README.md](adclone-studio/README.md) · [PRODUCT.md](adclone-studio/PRODUCT.md) · [DESIGN.md](adclone-studio/DESIGN.md)
-
-**Litsenziya eslatmasi:** repository’da alohida `LICENSE` fayli ko‘rinmaydi; bu koddan istalgan sharoitda foydalanishga avtomatik ruxsat berilganini anglatmaydi. Muallif litsenziyani alohida belgilashi mumkin.
-
----
-
-<div align="center">
-
-**AdClone Studio — mahsulotingiz, yangi hikoya.**
-
-</div>
+Xatolar va takliflar uchun [GitHub Issues](https://github.com/ShoxruxErkinov/adclone-studio/issues) oching.
